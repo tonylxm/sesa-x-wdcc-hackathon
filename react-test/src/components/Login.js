@@ -1,12 +1,24 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { auth } from '../firebase';
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Handle form submission logic here
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      console.log('User logged in');
+      // Additional logic after successful login
+      navigate('/home');
+    } catch (error) {
+      console.log('Login error:', error);
+      // Handle login error
+    }
+
   };
 
   return (

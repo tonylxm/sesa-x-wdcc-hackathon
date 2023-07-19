@@ -1,14 +1,36 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { auth, db } from '../firebase';
 
 function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-  };
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(email, password);
+      console.log('User registered:', user);
+      console.log(user.email);
+      console.log(name);
+      // Additional logic after successful sign-up
+    
+      //add user to firebase
+        const userRef = db.collection('users').doc(); // Assuming 'users' is the collection name
+        await userRef.set({
+            email: user.email,
+            name: name,
+        });
+
+        //navigate to next page
+        navigate('/home');
+        } catch (error) {
+        console.log('Sign-up error:', error);
+        // Handle sign-up error
+        }
+    };
 
   return (
     <div className="container mx-auto py-8">
@@ -23,6 +45,16 @@ function SignUp() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+        </div>
+        <div className="mb-4">
+            <label htmlFor="name" className="block text-gray-700">Name</label>
+            <input
+                type="text"
+                id="name"
+                className="border border-gray-400 p-2 w-full"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+            />
         </div>
         <div className="mb-4">
           <label htmlFor="password" className="block text-gray-700">Password</label>
