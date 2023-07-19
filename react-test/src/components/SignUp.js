@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { auth } from '../firebase';
 
 function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(email, password);
+      console.log('User registered:', user);
+      // Additional logic after successful sign-up
+    } catch (error) {
+      console.log('Sign-up error:', error);
+      // Handle sign-up error
+    }
   };
 
   return (
