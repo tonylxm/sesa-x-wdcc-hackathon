@@ -9,7 +9,7 @@ function Navbar() {
           <div className="text-white font-bold text-lg">Logo</div>
           <ul className="flex space-x-4">
             <li>
-                <Link to="/" className="text-white hover:text-gray-300"> Home </Link>
+                <Link to="/friends" className="text-white hover:text-gray-300"> Friends </Link>
             </li>
             <li>
                 <Link to="/" className="text-white hover:text-gray-300"> Home </Link>

@@ -18,11 +18,14 @@ function SignUp() {
       // Additional logic after successful sign-up
     
       //add user to firebase
-        const userRef = db.collection('users').doc(); // Assuming 'users' is the collection name
+        const userRef = db.collection('users').doc(user.uid); // Assuming 'users' is the collection name
         await userRef.set({
             email: user.email,
             name: name,
         });
+        db.collection("users").doc(user.uid).collection("pending").add({});
+        db.collection("users").doc(user.uid).collection("requests").add({});
+        db.collection("users").doc(user.uid).collection("friends").add({});
 
         //navigate to next page
         navigate('/home');
