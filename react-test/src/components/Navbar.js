@@ -18,7 +18,7 @@ function Navbar() {
                 <Link to="/" className="text-white hover:text-gray-300"> Home </Link>
             </li>
             <li>
-                <Link to="/" className="text-white hover:text-gray-300"> Home </Link>
+                <Link to="/login" className="text-white hover:text-gray-300"> Logout </Link>
             </li>
           </ul>
         </div>

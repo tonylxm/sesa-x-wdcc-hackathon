@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { db, auth } from '../firebase'; // Import your Firebase configuration file
 
-
 function FriendItem({ id, name, email, activeTab }) {
   const [buttonLabel, setButtonLabel] = useState('Add');
 
@@ -14,7 +13,7 @@ function FriendItem({ id, name, email, activeTab }) {
       if (buttonLabel !== 'Withdraw Request') {
         setButtonLabel('Withdraw Request');
       }
-    } else if (activeTab == 'Add Friends') {
+    } else if (activeTab === 'Add Friends') {
       if (buttonLabel !== 'Add') {
         setButtonLabel('Add');
       }
@@ -36,17 +35,22 @@ function FriendItem({ id, name, email, activeTab }) {
         await db.collection('users').doc(currentUserId).collection('requests').doc(id).delete();
         await db.collection('users').doc(currentUserId).collection('friends').doc(id).set({});
         await db.collection('users').doc(id).collection('friends').doc(currentUserId).set({});
+        
+        setButtonLabel('Request Accepted');
         console.log(id + ' accepted');
+
+
       } else if (activeTab === 'Pending' && buttonLabel === 'Withdraw Request') {
         // Handle the request withdrawal logic
         await db.collection('users').doc(currentUserId).collection('pending').doc(id).delete();
         await db.collection('users').doc(id).collection('requests').doc(currentUserId).delete();
+        setButtonLabel('Withdrawn');
         console.log(id + ' request withdrawn');
-      } else if (activeTab == 'Add Friends') {
+      } else if (activeTab === 'Add Friends') {
         // Adding friends logic
         await db.collection('users').doc(id).collection('requests').doc(currentUserId).set({});
         await db.collection('users').doc(currentUserId).collection('pending').doc(id).set({});
-        
+        setButtonLabel('Requested');
         console.log(id + ' requested');
       }
     } catch (error) {
@@ -74,12 +78,21 @@ function FriendItem({ id, name, email, activeTab }) {
 function FriendList({ friends, activeTab }) {
   const [friendInfo, setFriendInfo] = useState([]);
 
+
   useEffect(() => {
-    // Fetch user information for each friend using the getUserInfo function
     const fetchFriendInfo = async () => {
       const friendInfoPromises = friends.map((friendId) => getUserInfo(friendId));
-      const friendInfoData = await Promise.all(friendInfoPromises);
-      setFriendInfo(friendInfoData);
+
+      // Subscribe to real-time updates using Firestore's onSnapshot
+      const unsubscribe = db.collection('users').onSnapshot((snapshot) => {
+        const friendInfoData = friendInfoPromises.map((promise, index) => {
+          const snapshotData = snapshot.docs.find((doc) => doc.id === friends[index]);
+          return snapshotData ? { id: snapshotData.id, ...snapshotData.data() } : null;
+        });
+        setFriendInfo(friendInfoData);
+      });
+
+      return () => unsubscribe(); // Unsubscribe when the component unmounts
     };
 
     fetchFriendInfo();
@@ -127,6 +140,23 @@ function FriendSystem() {
     const [activeTab, setActiveTab] = useState('All');
 
     useEffect(() => {
+
+      // Declare the unsubscribe functions outside of useEffect
+      let unsubscribeFriends;
+      let unsubscribePending;
+      let unsubscribeRequests;
+
+      /*// Function to unsubscribe from all real-time updates
+      const unsubscribeAll = () => {
+        if (unsubscribeFriends) unsubscribeFriends();
+        if (unsubscribePending) unsubscribePending();
+        if (unsubscribeRequests) unsubscribeRequests();
+      };
+
+      */
+
+
+
       // Function to fetch the current user's friends from Firestore
       const fetchCurrentUserFriends = async () => {
         try {
@@ -143,6 +173,10 @@ function FriendSystem() {
         } catch (error) {
           console.log('Error fetching current user friends:', error);
         }
+
+        unsubscribeFriends = subscribeToFriends();
+        unsubscribePending = subscribeToPending();
+        unsubscribeRequests = subscribeToRequests();
       };
   
       // Function to fetch the current user's pending requests from Firestore
@@ -182,6 +216,57 @@ function FriendSystem() {
         }
       };
 
+      // Function to subscribe to real-time updates for friends
+      const subscribeToFriends = async () => {
+        const currentUser = auth.currentUser;
+        if (currentUser) {
+          const currentUserId = currentUser.uid;
+          const friendsRef = db.collection('users').doc(currentUserId).collection('friends');
+          
+          // Subscribe to real-time updates for friends
+          const unsubscribe = friendsRef.onSnapshot((snapshot) => {
+            const friendsData = snapshot.docs.map((doc) => doc.id);
+            setFriends(friendsData);
+          });
+
+          return () => unsubscribe(); // Unsubscribe when the component unmounts
+        }
+      };
+
+    // Function to subscribe to real-time updates for pending requests
+    const subscribeToPending = async () => {
+      const currentUser = auth.currentUser;
+      if (currentUser) {
+        const currentUserId = currentUser.uid;
+        const friendsRef = db.collection('users').doc(currentUserId).collection('pending');
+        
+        // Subscribe to real-time updates for friends
+        const unsubscribe = friendsRef.onSnapshot((snapshot) => {
+          const friendsData = snapshot.docs.map((doc) => doc.id);
+          setPendingRequests(friendsData);
+        });
+
+        return () => unsubscribe(); // Unsubscribe when the component unmounts
+      }
+    };
+
+    // Function to subscribe to real-time updates for pending requests
+    const subscribeToRequests = async () => {
+      const currentUser = auth.currentUser;
+      if (currentUser) {
+        const currentUserId = currentUser.uid;
+        const friendsRef = db.collection('users').doc(currentUserId).collection('requests');
+        
+        // Subscribe to real-time updates for friends
+        const unsubscribe = friendsRef.onSnapshot((snapshot) => {
+          const friendsData = snapshot.docs.map((doc) => doc.id);
+          setOutgoingRequests(friendsData);
+        });
+
+        return () => unsubscribe(); // Unsubscribe when the component unmounts
+      }
+    };
+
       const fetchAllUsers = async () => {
         try {
           // Fetch the current user's friends from Firestore
@@ -193,10 +278,14 @@ function FriendSystem() {
           console.log('Error fetching current user friends:', error);
         }
       };
+
+      // Fetch data and subscribe to real-time updates
       fetchCurrentUserFriends();
       fetchCurrentUserPending();
       fetchCurrentUserRequests();
       fetchAllUsers();
+      // Unsubscribe when the component unmounts
+      //return unsubscribeAll;
     }, []);
   
   
@@ -227,7 +316,7 @@ function FriendSystem() {
           <div className="flex bg-gray-200">
             <button
               className={`px-4 py-2 flex-1 text-center ${
-                activeTab === 'All' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'
+                activeTab === 'Friends' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'
               }`}
               onClick={() => setActiveTab('Friends')}
             >
