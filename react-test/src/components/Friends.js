@@ -269,13 +269,19 @@ function FriendSystem() {
 
       const fetchAllUsers = async () => {
         try {
-          // Fetch the current user's friends from Firestore
-          const usersSnapshot = await db.collection('users').get();
-          const friendsData = usersSnapshot.docs.map((doc) => doc.id);
-          setUsers(friendsData);
-
+          let usersRef = db.collection('users');
+      
+          // Apply the search term if it exists
+          if (searchTerm) {
+            usersRef = usersRef.where('name', '>=', searchTerm).where('name', '<=', searchTerm + '\uf8ff');
+          }
+      
+          // Fetch all users from Firestore
+          const usersSnapshot = await usersRef.get();
+          const usersData = usersSnapshot.docs.map((doc) => doc.id);
+          setUsers(usersData);
         } catch (error) {
-          console.log('Error fetching current user friends:', error);
+          console.log('Error fetching users:', error);
         }
       };
 
@@ -310,7 +316,6 @@ function FriendSystem() {
 
     return (
       <div className="p-4 bg-gray-100">
-        <h2 className="text-xl font-bold mb-4">Friends</h2>
         <div className="bg-white rounded-md shadow-md">  
           {/* Tabs */}
           <div className="flex bg-gray-200">
@@ -349,7 +354,7 @@ function FriendSystem() {
           </div>
           <div className="flex items-center justify-between p-4">
             {/* Search bar only displayed when activeTab is 'All' or 'Add Friends' */}
-            {(activeTab === 'All' || activeTab === 'Add Friends') && (
+            {(activeTab === 'Add Friends') && (
               <>
                 <input
                   type="text"
