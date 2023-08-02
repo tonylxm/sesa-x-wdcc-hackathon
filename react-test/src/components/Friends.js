@@ -3,25 +3,52 @@ import { db, auth } from '../firebase'; // Import your Firebase configuration fi
 
 function FriendItem({ id, name, email, activeTab }) {
   const [buttonLabel, setButtonLabel] = useState('Add');
+  const [isRequested, setIsRequested] = useState(false); // Track whether friend has been requested
+  const [isFriend, setIsFriend] = useState(false); // Track whether friend has been requested
 
   useEffect(() => {
     if (activeTab === 'Requests') {
-      if (buttonLabel !== 'Accept Request') {
-        setButtonLabel('Accept Request');
-      }
+      setButtonLabel('Accept Request');
     } else if (activeTab === 'Pending') {
-      if (buttonLabel !== 'Withdraw Request') {
-        setButtonLabel('Withdraw Request');
-      }
+      setButtonLabel('Withdraw Request');
     } else if (activeTab === 'Add Friends') {
-      if (buttonLabel !== 'Add') {
-        setButtonLabel('Add');
-      }
+      setButtonLabel('Add Friend');
     } else {
       setButtonLabel(null);
-
     }
-  }, [activeTab, buttonLabel]);
+
+
+    // Function to check if friend has been requested or is already a friend
+    const checkFriendRequest = async () => {
+      try {
+        const currentUser = auth.currentUser;
+        if (!currentUser) return;
+
+        const currentUserId = currentUser.uid;
+
+        const requestSnapshot = await db
+          .collection('users')
+          .doc(id)
+          .collection('requests')
+          .doc(currentUserId)
+          .get();
+
+        const friendSnapshot = await db
+          .collection('users')
+          .doc(currentUserId)
+          .collection('friends')
+          .doc(id)
+          .get();
+        
+        setIsFriend(friendSnapshot.exists);
+        setIsRequested(requestSnapshot.exists);
+      } catch (error) {
+        console.log('Error checking friend request:', error);
+      }
+    };
+
+    checkFriendRequest();
+  }, [activeTab, buttonLabel, id]);
 
   const handleRequest = async () => {
     try {
@@ -36,7 +63,7 @@ function FriendItem({ id, name, email, activeTab }) {
         await db.collection('users').doc(currentUserId).collection('friends').doc(id).set({});
         await db.collection('users').doc(id).collection('friends').doc(currentUserId).set({});
         
-        setButtonLabel('Request Accepted');
+        setIsFriend(true);
         console.log(id + ' accepted');
 
 
@@ -44,19 +71,19 @@ function FriendItem({ id, name, email, activeTab }) {
         // Handle the request withdrawal logic
         await db.collection('users').doc(currentUserId).collection('pending').doc(id).delete();
         await db.collection('users').doc(id).collection('requests').doc(currentUserId).delete();
-        setButtonLabel('Withdrawn');
         console.log(id + ' request withdrawn');
+
       } else if (activeTab === 'Add Friends') {
-        // Adding friends logic
         await db.collection('users').doc(id).collection('requests').doc(currentUserId).set({});
         await db.collection('users').doc(currentUserId).collection('pending').doc(id).set({});
-        setButtonLabel('Requested');
+        setIsRequested(true); // Set the friend as requested
         console.log(id + ' requested');
       }
     } catch (error) {
       console.log('Error handling request:', error);
     }
   };
+
 
   return (
     <div className="flex items-center justify-between px-4 py-2 bg-white hover:bg-gray-100">
@@ -65,11 +92,27 @@ function FriendItem({ id, name, email, activeTab }) {
         <p className="text-sm text-gray-500">{id}</p>
         <p className="text-sm text-gray-500">{email}</p>
       </div>
-      {buttonLabel && (
-        <button className="px-3 py-1 bg-blue-500 text-white rounded-full" onClick={handleRequest}>
+      {activeTab === 'Add Friends' && (
+        <button
+          className={`px-3 py-1 bg-blue-500 text-white rounded-full ${
+            (isRequested || isFriend) ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-600'
+          }`}
+          onClick={handleRequest}
+          disabled={isRequested || isFriend}
+        >
           {buttonLabel}
         </button>
       )}
+      {activeTab === 'Requests' || activeTab === 'Pending' && ( // Conditionally render the button under 'Requests' tab
+        <button
+          className={`px-3 py-1 bg-blue-500 text-white rounded-full hover:bg-blue-600'
+          }`}
+          onClick={handleRequest}
+        >
+          {buttonLabel}
+        </button>
+      )}
+
     </div>
   );
 }
