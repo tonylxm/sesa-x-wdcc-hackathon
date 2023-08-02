@@ -137,7 +137,7 @@ function FriendSystem() {
     const [requests, setOutgoingRequests] = useState([]);
 
 
-    const [activeTab, setActiveTab] = useState('All');
+    const [activeTab, setActiveTab] = useState('Friends');
 
     useEffect(() => {
 
