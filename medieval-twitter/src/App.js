@@ -4,7 +4,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Home from './components/Home';
 import FriendSystem from './components/Friends';
-import Leaderboard from './components/Leaderboard';
+import Hierarchy from './components/Hierarchy';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
@@ -19,7 +19,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/home" element={<Home />} />
         <Route path="/friends" element={<FriendSystem />} />
-        <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/hierarchy" element={<Hierarchy />} />
         
         
       </Routes>
