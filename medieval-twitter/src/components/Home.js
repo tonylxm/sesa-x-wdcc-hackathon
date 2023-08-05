@@ -1,15 +1,40 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
+import logo from '../squarel.png';
+import square from '../squarebackground.JPG';
+{/* <div className="w-48 h-48 mx-auto mb-4 rounded-lg overflow-hidden bg-cover bg-center" 
+style={{ backgroundImage: `url(${square})` }}></div> */}
 function Home() {
-  return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
-      <h1 className="text-4xl font-bold mb-4">Welcome to the Home Page</h1>
-      <p className="text-lg text-gray-700">This is a basic home page using React and Tailwind CSS.</p>
-      <button className="mt-6 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-        Get Started
-      </button>
-    </div>
-  );
+    return (
+      <div className="min-h-screen pt-10 pb-6 px-2 md:px-0 background-lightdark">
+        <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-2xl background-image">
+          <div className="m-auto logo">
+            <img src={logo} alt="our logo" />
+          </div>
+          <div className="py-10 font-black text-center text-black text-6xl">
+            <h1>Ye Fair Town Square</h1>
+            <p className="text-lg w-3/5 m-auto mt-10">
+              Amidst the Enchantment of Medieval Marvels: Happening Right Now
+            </p>
+          </div>
+          <div className="flex justify-center items-center mt-4">
+            <Link to="/signup" className="btn m-auto btn-style">
+            Sign Up Here
+            </Link>
+            <Link to="/login" className="btn m-auto btn-style">
+            Login Here
+            </Link>
+          </div>
+        </div>
+        <div className="min-w-screen mt-10 bg-white text-black p-20 pl-40">
+          <h1 className="text-4xl font-bold">A Castle for Chatter</h1>
+          <p className="mt-2 w-1/2 text-xl">
+            In an era of jesters, jongleurs, and minstrels, we bring to you Medieval Tweets,
+            where every noble, knight, and peasant can share their thoughts...
+          </p>
+        </div>
+      </div>
+    )
 }
 
 export default Home;
