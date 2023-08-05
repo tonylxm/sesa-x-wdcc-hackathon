@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { db, auth } from '../firebase'; // Import your Firebase configuration file
 
-function FriendItem({ id, name, email, activeTab }) {
+function FriendItem({ id, name, email, activeTab, status, letters }) {
   const [buttonLabel, setButtonLabel] = useState('Add');
   const [isRequested, setIsRequested] = useState(false); // Track whether friend has been requested
   const [isFriend, setIsFriend] = useState(false); // Track whether friend has been requested
@@ -88,9 +88,9 @@ function FriendItem({ id, name, email, activeTab }) {
   return (
     <div className="flex items-center justify-between px-4 py-2 bg-white hover:bg-gray-100">
       <div>
-        <p className="text-lg font-medium text-gray-800">{name}</p>
-        <p className="text-sm text-gray-500">{id}</p>
-        <p className="text-sm text-gray-500">{email}</p>
+        <p className="text-lg font-medium text-gray-800">{name} ({status})</p>
+        <p className="text-sm text-gray-500">letters: {letters}</p>
+        
       </div>
       {activeTab === 'Add Friends' && (
         <button
@@ -144,7 +144,7 @@ function FriendList({ friends, activeTab }) {
   return (
     <div className="flex flex-col space-y-2">
       {friendInfo.map((friend) => (
-        <FriendItem key={friend.id} id={friend.id} name={friend.name} email={friend.email} activeTab={activeTab}/>
+        <FriendItem key={friend.id} id={friend.id} name={friend.name} email={friend.email} status={friend.status} letters={friend.letters} activeTab={activeTab}/>
       ))}
     </div>
   );
@@ -157,9 +157,9 @@ async function getUserInfo(userId) {
 
     if (userSnapshot.exists) {
       const userData = userSnapshot.data();
-      const { name, email } = userData;
+      const { name, email, status, letters } = userData;
 
-      return { id: userId, name, email };
+      return { id: userId, name, email, status, letters };
     } else {
       // Handle the case where the user document does not exist
       return null;
