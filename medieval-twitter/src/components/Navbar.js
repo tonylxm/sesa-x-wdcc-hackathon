@@ -57,6 +57,12 @@ function Navbar() {
                 <Link to="/hierarchy" className="text-white hover:text-gray-300"><div class="px-2"><img src={hierarchy} alt = "hierarchy icon" className="h-14"/>Hierarchy</div></Link>
               </li>
               <li>
+                <Link to="/post" className="text-white hover:text-gray-300"> Post </Link>
+              </li>
+              <li>
+                <Link to="/feed" className="text-white hover:text-gray-300"> Feed </Link>
+              </li>
+              <li>
                 <Link
                     to="/login"
                     onClick={handleLogout}
