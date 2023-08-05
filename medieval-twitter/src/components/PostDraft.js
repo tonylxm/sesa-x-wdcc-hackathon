@@ -1,32 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Picture, NameUsername } from './Post';
+import { Picture, NameUsername, Post } from './Post';
 import { BsImage, BsImageFill } from 'react-icons/bs';
 import { RiFileGifLine, RiFileGifFill } from 'react-icons/ri';
 import { db, auth } from '../firebase'; // Import your Firebase configuration file
-import { storage, uploadBytes, listAll } from "../firebase";
-import { ref } from "firebase/storage";
+import axios from 'axios';
 
   export const ExternalFiles = () => {
     const [image, selectImage] = useState(false)
     const [gif, selectGif] = useState(false)
-    const [imageUpload, selsetImageUpload] = useState(null)
+    // const [file, selectFile] = useState(null)
 
-    const uploadImage = () => {
-        if (imageUpload == null) return;
-        const imageRef = ref(storage, `images/${imageUpload.name + "hihihihihh"}`);
-        uploadBytes(imageRef, imageUpload).then(() => {
-            alert("Image Uploaded!");
-        })
-    };
+    // const fileSelectorHandler = (event) => {
+    //     console.log(event.target.files[0]);
+    //     selectFile({
+    //         seletedFile: event.target.files[0]
+    //     })
+    // }   
+
+    // const uploadFileHandler = () => {
+    //     const fd = new FormData();
+    //     fd.append('image', file, file.name);
+    //     axios.post('')
+    //     .then(res => {
+    //         console.log(res);
+    //     });
+    // }
 
     return (
         <div className=" flex">
-            <input type='file' onChange={(event) => {
-                selsetImageUpload(event.target.files[0]);
-            }}/>
+            {/* <input type='file' onChange={fileSelectorHandler}/> */}
             <button className="m-3 mt-7 ml-0" onClick={() => {
-                uploadImage(); 
+                // uploadFileHandler(); 
                 selectImage(!image);
             }}>{image ? <BsImageFill size="20" /> : <BsImage size="20" />}
             </button>
@@ -44,40 +49,8 @@ const PostDraft = () => {
   // character count
   const [charCount, setCharCount] = useState(0);
 
-  let limit = 20;
-
-  const [user, setUser] = useState(null);
-  
-  useEffect(() => {
-    const fetchUserData = async () => {
-      const currentUser = auth.currentUser;
-      const userId = currentUser.uid;
-
-      console.log(userId);
-
-      try {
-        const userSnapshot = await db.collection('users').doc(userId).get();
-        if (userSnapshot.exists) {
-          const userData = userSnapshot.data();
-          setUser(userData);
-        }
-      } catch (error) {
-        console.log('Error fetching user data:', error);
-      }
-    };
-
-    fetchUserData();
-  }, []);
-
-  if (user.status === 'royal') {
-    limit = 100;
-  }
-  else if (user.status === 'noble') {
-    limit = 50;
-  }
-  else {
-    limit = 10;
-  }
+  // word limit
+  const limit = 20;
 
   const handleTextAreaChange = (event) => {
     setPostContent(event.target.value);
@@ -150,7 +123,7 @@ const PostDraft = () => {
       <ExternalFiles />
       <div>
         <button
-          className="float-right text-black-500 border border-black-500 hover:bg-blue-500 hover:text-white active:bg-blue-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          className="float-right text-black-500 border border-black-500 hover:bg-blue-500 hover:text-white active:bg-blue-600 nt-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
           type="button"
           onClick={handlePostSubmission}
         > Submit
