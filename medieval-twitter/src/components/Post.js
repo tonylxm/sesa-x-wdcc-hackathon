@@ -63,7 +63,7 @@ export const ReactionBar = ({dislikes=100, likes=273, comments=7}) => {
 export const Post = ({name, username, dislikes, comments, likes, text}) => {
     // Add props to Picture later when pfp is added
     return (
-        <div className="m-auto p-10 shadow-md w-1/2 h-1/4">
+        <div  className='m-auto p-10 shadow-md w-1/2 h-1/4  bg-cover bg-center' >
             <div className="flex ">
                 <div className="mb-5 ">
                 <Picture />
