@@ -68,6 +68,16 @@ export const NameUsername = () => {
     );
   };
 
+const NameUsernameTime = ({name, username, time}) => {
+    return (
+          <>
+            <h1 className="font-bold w-full ml-5">{name}</h1>
+            <h3 className="block ml-5">{username}</h3>  
+          </>
+
+    );
+}
+
 export const TextBody = ({text="This is some placeholder text. May the King live for a long time and have lots of good things. Our Father in Heaven, Hallowed be thy name. thy \
 Kingdom come, thy will be done in Earth as it is in Heaven. Give us today our daily bread."}) => {
     return (
@@ -91,7 +101,7 @@ export const ReactionBar = ({dislikes=100, likes=273, comments=7}) => {
     )
 }
 
-export const Post = ({name, username, dislikes, comments, likes, text}) => {
+export const Post = ({name, username, dislikes, comments, likes, text, time}) => {
     // Add props to Picture later when pfp is added
     return (
         <div style={{ backgroundImage: `url(${parchment})` }} className='m-auto p-10 w-1/2 h-1/4 bg-cover bg-center' >
@@ -99,7 +109,7 @@ export const Post = ({name, username, dislikes, comments, likes, text}) => {
                 <div className="mb-5 ">
                 <Picture />
                 </div>
-                <NameUsername name={name} username = {username}/>
+                <NameUsernameTime name={name} username = {username} time = {time} />
             </div>
         
         <TextBody text={text}/>
