@@ -1,5 +1,5 @@
 # XIV 
-## For WDCC Hackathon 2023
+## For SESA x WDCC Hackathon 2023
 
 ### Theme
 Rewriting History
