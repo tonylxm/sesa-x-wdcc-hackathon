@@ -6,15 +6,66 @@ import { RiFileGifLine, RiFileGifFill } from 'react-icons/ri';
 import { db, auth, storage } from '../firebase'; // Import your Firebase configuration file
 import axios from 'axios';
 
+import GphApiClient from 'giphy-js-sdk-core';
+
+const apiKey = '0daeIg73TT6IvweTfhK6aM54rZLCbOLD';
+const giphyClient = GphApiClient(apiKey);
+
+
+//search for gif
+export const GiphySearch = ({ onGifSelect }) => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [gifs, setGifs] = useState([]);
+
+  const handleSearch = () => {
+    giphyClient.search('gifs', { q: searchQuery, limit: 10 })
+      .then((response) => {
+        setGifs(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching GIFs:', error);
+      });
+  };
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        placeholder="Search for GIFs"
+      />
+      <button onClick={handleSearch}>Search</button>
+
+      <div>
+        {gifs.map((gif) => (
+          <img
+            key={gif.id}
+            src={gif.images.fixed_height.url}
+            alt="GIF"
+            onClick={() => onGifSelect(gif.images.fixed_height.url)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 export const ExternalFiles = () => {
   const [image, selectImage] = useState(false);
   const [gif, selectGif] = useState(false);
   const [file, selectFile] = useState(null);
   const [imageURL, setImageURL] = useState('');
+  const [gifURL, setGifURL] = useState('');
+
 
   const fileSelectorHandler = (event) => {
     console.log(event.target.files[0]);
     selectFile(event.target.files[0]);
+  };
+
+  const handleGifSelect = (gifUrl) => {
+    setGifURL(gifUrl);
+    selectGif(true);
   };
 
   const uploadFileHandler = () => {
@@ -54,7 +105,7 @@ export const ExternalFiles = () => {
       >
         {image ? <BsImageFill size="20" /> : <BsImage size="20" />}
       </button>
-
+      <GiphySearch onGifSelect={handleGifSelect} />
       <button className="m-3 mt-7 ml-0" onClick={() => selectGif(!gif)}>
         {gif ? <RiFileGifFill size="20" /> : <RiFileGifLine size="20" />}
       </button>
