@@ -1,16 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../xiv.png';
-
+import logo from '../squarel.png';
+import square from '../squarebackground.JPG';
+{/* <div className="w-48 h-48 mx-auto mb-4 rounded-lg overflow-hidden bg-cover bg-center" 
+style={{ backgroundImage: `url(${square})` }}></div> */}
 function Home() {
     return (
       <div className="min-h-screen pt-10 pb-6 px-2 md:px-0 background-lightdark">
-        <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-2xl">
+        <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-2xl background-image">
           <div className="m-auto logo">
             <img src={logo} alt="our logo" />
           </div>
           <div className="py-10 font-black text-center text-black text-6xl">
-            <h1>Ye Olde Tweets</h1>
+            <h1>Ye Fair Town Square</h1>
             <p className="text-lg w-3/5 m-auto mt-10">
               Amidst the Enchantment of Medieval Marvels: Happening Right Now
             </p>

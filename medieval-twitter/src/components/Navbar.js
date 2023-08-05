@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { auth } from '../firebase'; // Import your Firebase configuration file
-import logo from '../logo.png';
+import logo from '../opaquel.png';
 import home from '../hmwhite.png';
 import hierarchy from '../hwhite.png';
 import friends from '../fwhite.png';
@@ -42,9 +42,9 @@ function Navbar() {
     <nav className="background-dark p-4">
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
-          <div className="text-white font-bold text-lg w-20 logo">
-            <img src={logo} alt="our logo" />
-          </div>
+{/*          <div className="text-white font-bold text-lg w-20 logo">*/}
+            <img src={logo} alt="our logo" className = "w-20" />
+{/*          </div> */}
           {currentUser ? ( // Show the unordered list only if the user is signed in
             <ul className="flex space-x-4">
               <li>
