@@ -78,7 +78,7 @@ function SignUp() {
 
       //add user to leaderboard
       db.collection('leaderboard').doc(user.uid).set({
-        points: 0,
+        points: letters,
       });
 
       //navigate to next page
