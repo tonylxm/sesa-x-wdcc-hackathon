@@ -39,7 +39,7 @@ function Navbar() {
                 <Link to="/" className="text-white hover:text-gray-300"> Home </Link>
               </li>
               <li>
-                <Link to="/leaderboard" className="text-white hover:text-gray-300"> Leaderboard </Link>
+                <Link to="/hierarchy" className="text-white hover:text-gray-300"> Hierarchy </Link>
               </li>
               <li>
                 <Link to="/postdraft" className="text-white hover:text-gray-300"> Post Draft</Link>

@@ -8,6 +8,21 @@ function SignUp() {
   const [name, setName] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [emailError, setEmailError] = useState('');
+
+
+  //class selector
+  const options = [
+    { value: 'royal', label: 'Royal' },
+    { value: 'noble', label: 'Noble' },
+    { value: 'peasant', label: 'Peasant' },
+    // Add more options as needed
+  ];
+  const [selectedStatus, setselectedStatus] = useState('');
+
+  const handleSelectOption = (event) => {
+    setselectedStatus(event.target.value);
+  };
+
   const navigate = useNavigate();
 
   const validateEmail = (email) => {
@@ -40,19 +55,30 @@ function SignUp() {
       console.log('User registered:', user);
       console.log(user.email);
       console.log(name);
+      console.log(selectedStatus);
 
-      // Additional logic after successful sign-up
+      let letters = 0; // Initialize letters variable with a default value
+      if (selectedStatus === 'royal') {
+        letters = 100;
+      } else if (selectedStatus === 'noble') {
+        letters = 50;
+      } else if (selectedStatus === 'peasant') {
+        letters = 10;
+      }
+      
 
       //add user to firebase
       const userRef = db.collection('users').doc(user.uid);
       await userRef.set({
         email: user.email,
         name: name,
+        status: selectedStatus,
+        letters: letters,
       });
 
       //add user to leaderboard
       db.collection('leaderboard').doc(user.uid).set({
-        points: 0,
+        points: letters,
       });
 
       //navigate to next page
@@ -98,6 +124,26 @@ function SignUp() {
               onChange={(e) => setName(e.target.value)}
             />
           </div>
+          <div className="mb-6 pt-3 rounded bg-gray-200">
+            <label htmlFor="dropdown" className="block text-gray-700 text-sm font-bold mb-2 ml-3">
+              Select Class
+            </label>
+            <select
+              id="dropdown"
+              value={selectedStatus}
+              onChange={handleSelectOption}
+              className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-indigo-500 transition duration-500 px-3 py-2 text-base"
+            >
+              <option value="">Class</option>
+              {options.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+
           <div className="mb-6 pt-3 rounded bg-gray-200">
             <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2 ml-3">Password</label>
             <input
