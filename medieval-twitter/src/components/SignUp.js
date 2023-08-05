@@ -84,7 +84,7 @@ function SignUp() {
       });
 
       //navigate to next page
-      navigate('/home');
+      navigate('/feed');
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {
         setEmailError('Email is already used');
@@ -115,6 +115,7 @@ function SignUp() {
                 setEmail(e.target.value);
                 setEmailError(''); // Remove error when user starts typing again
               }}
+              required
             />
             {emailError && <p className="text-red-500 text-xs mt-1 ml-3">{emailError}</p>}
           </div>
@@ -128,6 +129,7 @@ function SignUp() {
               className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              required
             />
           </div>
           <div className="mb-6 pt-3 rounded bg-gray-200">
@@ -140,6 +142,7 @@ function SignUp() {
               className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
               value={userName}
               onChange={(e) => setuserName(e.target.value)}
+              required
             />
           </div>
           <div className="mb-6 pt-3 rounded bg-gray-200">
@@ -151,6 +154,7 @@ function SignUp() {
               value={selectedStatus}
               onChange={handleSelectOption}
               className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-indigo-500 transition duration-500 px-3 py-2 text-base"
+              required
             >
               <option value="">Class</option>
               {options.map((option) => (
@@ -176,6 +180,7 @@ function SignUp() {
                 setPassword(e.target.value);
                 setPasswordError(''); // Remove error when user starts typing again
               }}
+              required
             />
             {passwordError && <p className="text-red-500 text-xs mt-1 ml-3">{passwordError}</p>}
           </div>
