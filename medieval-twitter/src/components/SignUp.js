@@ -84,7 +84,7 @@ function SignUp() {
       });
 
       //navigate to next page
-      navigate('/home');
+      navigate('/feed');
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {
         setEmailError('Email is already used');
