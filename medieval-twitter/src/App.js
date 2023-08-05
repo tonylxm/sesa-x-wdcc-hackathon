@@ -8,7 +8,6 @@ import FriendSystem from './components/Friends';
 import PostDraft from './components/PostDraft';
 import Hierarchy from './components/Hierarchy';
 import { Post } from './components/Post';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Feed from './components/Feed';
 
 function App() {

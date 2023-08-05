@@ -58,7 +58,7 @@ body {
 .background-image {
   width: 100%;
   height: 100%;
-  background-image: url('C:\Users\T45t1\OneDrive\Desktop\wdcc-hackathon\medieval-twitter\src\bgtown.png');
+  background-image: url('./bgtown.png');
   background-size: cover;
   background-position: center;
 }
