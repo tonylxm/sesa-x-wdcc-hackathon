@@ -5,7 +5,7 @@ import SignUp from './components/SignUp';
 import Home from './components/Home';
 import FriendSystem from './components/Friends';
 import Leaderboard from './components/Leaderboard';
-import Post from './components/Post';
+import { Post } from './components/Post';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Picture = () => {
+export const Picture = () => {
     return (
         <>
         <div className="overflow-hidden rounded-lg w-16">
@@ -11,7 +11,7 @@ const Picture = () => {
     );
 }
 
-const NameUsername = () => {
+export const NameUsername = () => {
     return (
         <div >
         <h1 className="font-bold w-full ml-5">Lord Faarquard</h1>
@@ -20,24 +20,26 @@ const NameUsername = () => {
     );
 }
 
-const Text = () => {
+export const TextBody = () => {
     return (
-        <p>This is some placeholder text.</p>
+        <p>This is some placeholder text. May the King live for a long time and have lots of good things. Our Father in Heaven, Hallowed be thy name. thy
+            Kingdom come, thy will be done in Earth as it is in Heaven. Give us today our daily bread
+        </p>
     )
 }
 
-const Post = () => {
+export const Post = () => {
     return (
         <div className="m-auto p-10 shadow-md w-1/2 h-1/4">
             <div className="flex ">
+                <div className="mb-5">
                 <Picture />
+                </div>
                 <NameUsername />
             </div>
         
-        <Text />
+        <TextBody />
         </div>
 
     );
 }
-
-export default Post
