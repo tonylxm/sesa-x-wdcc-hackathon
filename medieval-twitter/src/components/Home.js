@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../xiv.png';
 
 function Home() {
     return (
-      <div className="min-h-screen pt-10 pb-6 px-2 md:px-0">
+      <div className="min-h-screen pt-10 pb-6 px-2 md:px-0 background-dark">
         <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-2xl">
-          <div>
-            <img src="../xiv.png" alt="our logo" />
+          <div className="w-1/2 m-auto">
+            <img src={logo} alt="our logo" />
           </div>
           <div className="py-10 font-black text-center text-black text-6xl">
             <h1>Ye Olde Tweets</h1>

@@ -11,7 +11,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --main-text: #8DA1B9;
+  --beige: #F4E8C1;
+  --dark-brown: #594236;
+  --brown: #6F584B;
+}
+
+.background-dark {
+  background-color: var(--dark-brown);
+}
+.background-light {
+  background-color: var(--beige);
+}
+.background-lightdark {
+  background-color: var(--brown);
+}
+.text-primary {
+  color: var(--main-text);
 }
