@@ -1,13 +1,23 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
+
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(null);
+
+    // Check if email and password are provided
+    if (!email.trim() || !password.trim()) {
+      setError('Please fill in all the fields.');
+      return;
+    }
+
     // Handle form submission logic here
     try {
       await auth.signInWithEmailAndPassword(email, password);
@@ -15,10 +25,10 @@ function Login() {
       // Additional logic after successful login
       navigate('/home');
     } catch (error) {
+      setError('Invalid email or password. Please try again.');
       console.log('Login error:', error);
       // Handle login error
     }
-
   };
 
   return (
@@ -26,8 +36,11 @@ function Login() {
       <main className="max-w-sm mx-auto bg-white p-8 rounded-lg shadow-2xl">
         <h2 className="text-2xl font-bold mb-4">Login</h2>
         <form onSubmit={handleSubmit} className="flex flex-col">
+          {error && <p className="text-red-500 mb-4">{error}</p>}
           <div className="mb-6 pt-3 rounded bg-gray-200">
-            <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2 ml-3">Email</label>
+            <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2 ml-3">
+              Email
+            </label>
             <input
               type="email"
               id="email"
@@ -37,7 +50,9 @@ function Login() {
             />
           </div>
           <div className="mb-6 pt-3 rounded bg-gray-200">
-            <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2 ml-3">Password</label>
+            <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2 ml-3">
+              Password
+            </label>
             <input
               type="password"
               id="password"
@@ -61,7 +76,6 @@ function Login() {
       </main>
     </div>
   );
-};
-
+}
 
 export default Login;
