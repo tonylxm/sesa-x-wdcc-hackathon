@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../xiv.png';
 
 function Home() {
     return (
-      <div className="min-h-screen pt-10 pb-6 px-2 md:px-0">
+      <div className="min-h-screen pt-10 pb-6 px-2 md:px-0 background-lightdark">
         <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-2xl">
-          <div>
-            <img src="../xiv.png" alt="our logo" />
+          <div className="m-auto logo">
+            <img src={logo} alt="our logo" />
           </div>
           <div className="py-10 font-black text-center text-black text-6xl">
             <h1>Ye Olde Tweets</h1>
@@ -15,10 +16,10 @@ function Home() {
             </p>
           </div>
           <div className="flex justify-center items-center mt-4">
-            <Link to="/signup" className="btn btn-primary m-auto">
+            <Link to="/signup" className="btn m-auto btn-style">
             Sign Up Here
             </Link>
-            <Link to="/login" className="btn btn-primary m-auto">
+            <Link to="/login" className="btn m-auto btn-style">
             Login Here
             </Link>
           </div>

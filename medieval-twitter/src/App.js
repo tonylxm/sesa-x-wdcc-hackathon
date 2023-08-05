@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
@@ -8,8 +9,7 @@ import PostDraft from './components/PostDraft';
 import Hierarchy from './components/Hierarchy';
 import { Post } from './components/Post';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
-
+import Feed from './components/Feed';
 
 function App() {
   return (
@@ -24,6 +24,7 @@ function App() {
         <Route path="/postdraft" element={<PostDraft />} />
         <Route path="/hierarchy" element={<Hierarchy />} />
         <Route path="/post" element={<Post />} />
+        <Route path="/feed" element={<Feed />} />
       </Routes>
     </Router>
   );
