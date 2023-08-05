@@ -33,13 +33,13 @@ export const TextBody = () => {
 export const ReactionBar = () => {
     const [thumbsUp, setThumbsUp] = useState(false)
     const [thumbsDown, setThumbsDown] = useState(false)
-    const [comment, setComment] = useState(false)
+    const [comment, setComment] = useState(false) // to do : add a count that adds to the number of likes each time you press the button
 
     return (
         <div className=" flex">
-            <button className="m-3 mt-7 ml-0" onClick={()=>setThumbsUp(!thumbsUp)}>{thumbsUp ? <PiThumbsUpFill size="20"/> : <PiThumbsUp size="20"/>}</button>
-            <button className="m-3 mt-7 ml-0" onClick={()=>setThumbsDown(!thumbsDown)}>{thumbsDown ? <PiThumbsDownFill size="20"/> : <PiThumbsDown size="20"/>}</button>
-            <button className="m-3 mt-7 ml-0" onClick={()=>setComment(!comment)}>{comment ? <BiSolidCommentDots size="20"/> : <BiCommentDetail size="20"/>}</button>
+            <button className="m-3 mt-8 ml-0 flex" onClick={()=>setThumbsUp(!thumbsUp)}>{thumbsUp ? <PiThumbsUpFill size="20"/> : <PiThumbsUp size="20"/>}<p className="ml-3 mr-3 mt-0">1.2k</p></button>
+            <button className="m-3 mt-8 ml-0 flex" onClick={()=>setThumbsDown(!thumbsDown)}>{thumbsDown ? <PiThumbsDownFill size="20"/> : <PiThumbsDown size="20"/>}<p className="ml-3 mr-3 mt-0">5</p></button>
+            <button className="m-3 mt-8 ml-0 flex" onClick={()=>setComment(!comment)}>{comment ? <BiSolidCommentDots size="20"/> : <BiCommentDetail size="20"/>}<p className="ml-3 mr-3 mt-0">32</p></button>
         </div>
         
     )
