@@ -358,12 +358,12 @@ function FriendSystem() {
   
 
     return (
-      <div className="p-4 bg-gray-100">
+      <div className="p-4 h-screen bg-gray-100 background-light">
         <div className="bg-white rounded-md shadow-md">  
           {/* Tabs */}
           <div className="flex bg-gray-200">
             <button
-              className={`px-4 py-2 flex-1 text-center ${
+              className={`px-4 py-2 flex-1 text-center btn-style ${
                 activeTab === 'Friends' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'
               }`}
               onClick={() => setActiveTab('Friends')}
@@ -371,7 +371,7 @@ function FriendSystem() {
               All Friends
             </button>
             <button
-              className={`px-4 py-2 flex-1 text-center ${
+              className={`px-4 py-2 flex-1 text-center btn-style ${
                 activeTab === 'Pending' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'
               }`}
               onClick={() => setActiveTab('Pending')}
@@ -379,7 +379,7 @@ function FriendSystem() {
               Pending
             </button>
             <button
-              className={`px-4 py-2 flex-1 text-center ${
+              className={`px-4 py-2 flex-1 text-center btn-style ${
                 activeTab === 'Requests' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'
               }`}
               onClick={() => setActiveTab('Requests')}
@@ -387,7 +387,7 @@ function FriendSystem() {
               Requests
             </button>
             <button
-              className={`px-4 py-2 flex-1 text-center ${
+              className={`px-4 py-2 flex-1 text-center btn-style ${
                 activeTab === 'Add Friends' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'
               }`}
               onClick={() => setActiveTab('Add Friends')}
