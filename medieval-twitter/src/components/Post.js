@@ -41,7 +41,7 @@ export const NameUsername = () => {
         {user ? (
           <>
             <h1 className="font-bold w-full ml-5">{user.name}</h1>
-            <h3 className="block ml-5">@lordoftheland</h3>  
+            <h3 className="block ml-5">@{user.userName}</h3>  
           </>
         ) : (
           <p>Loading user data...</p>
