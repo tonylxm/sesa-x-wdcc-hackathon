@@ -5,6 +5,7 @@ import SignUp from './components/SignUp';
 import Home from './components/Home';
 import FriendSystem from './components/Friends';
 import Leaderboard from './components/Leaderboard';
+import PostDraft from './components/PostDraft';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/friends" element={<FriendSystem />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/postdraft" element={<PostDraft />} />
         
         
       </Routes>
