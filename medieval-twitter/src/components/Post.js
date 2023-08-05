@@ -4,8 +4,8 @@ import React from 'react';
 const Picture = () => {
     return (
         <>
-        <div className="overflow-hidden rounded-lg w-20">
-            <img src={require("../images/profile-picture.jpg")} alt={"Your profile pic"} className="rounded-full w-full h-20  object-cover"  />
+        <div className="overflow-hidden rounded-lg w-16">
+            <img src={require("../images/profile-picture.jpg")} alt={"Your profile pic"} className="rounded-full w-full h-16 object-cover"  />
         </div>
         </>
     );
@@ -13,10 +13,10 @@ const Picture = () => {
 
 const NameUsername = () => {
     return (
-        <>
-        <h1>Lord Faarquard</h1>
-        <h3>@lordoftheland</h3>
-        </>
+        <div >
+        <h1 className="font-bold w-full ml-5">Lord Faarquard</h1>
+        <h3 className="block ml-5">@lordoftheland</h3>
+        </div>
     );
 }
 
@@ -28,9 +28,12 @@ const Text = () => {
 
 const Post = () => {
     return (
-        <div className="m-auto p-20 shadow-md w-3/4 h-1/4">
-        <Picture />
-        <NameUsername />
+        <div className="m-auto p-10 shadow-md w-1/2 h-1/4">
+            <div className="flex ">
+                <Picture />
+                <NameUsername />
+            </div>
+        
         <Text />
         </div>
 
