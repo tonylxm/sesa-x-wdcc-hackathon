@@ -4,7 +4,6 @@ import { Picture, NameUsername, Post } from './Post';
 import { BsImage, BsImageFill } from 'react-icons/bs';
 import { RiFileGifLine, RiFileGifFill } from 'react-icons/ri';
 import { db, auth } from '../firebase'; // Import your Firebase configuration file
-import axios from 'axios';
 
   export const ExternalFiles = () => {
     const [image, selectImage] = useState(false)

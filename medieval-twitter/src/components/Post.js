@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { PiThumbsUp, PiThumbsDown, PiThumbsUpFill, PiThumbsDownFill } from 'react-icons/pi';
 import { BiCommentDetail, BiSolidCommentDots } from 'react-icons/bi';
 import pfp from '../images/profile-picture.jpg';
+import parchment from '../images/parchmentpost.png';
 import { db, auth } from '../firebase';
 
 
@@ -93,7 +94,7 @@ export const ReactionBar = ({dislikes=100, likes=273, comments=7}) => {
 export const Post = ({name, username, dislikes, comments, likes, text}) => {
     // Add props to Picture later when pfp is added
     return (
-        <div  className='m-auto p-10 shadow-md w-1/2 h-1/4  bg-cover bg-center' >
+        <div style={{ backgroundImage: `url(${parchment})` }} className='m-auto p-10 w-1/2 h-1/4 bg-cover bg-center' >
             <div className="flex ">
                 <div className="mb-5 ">
                 <Picture />
