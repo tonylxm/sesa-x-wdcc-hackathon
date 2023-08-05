@@ -44,8 +44,40 @@ const PostDraft = () => {
   // character count
   const [charCount, setCharCount] = useState(0);
 
-  // word limit
-  const limit = 20;
+  let limit = 20;
+
+  const [user, setUser] = useState(null);
+  
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const currentUser = auth.currentUser;
+      const userId = currentUser.uid;
+
+      console.log(userId);
+
+      try {
+        const userSnapshot = await db.collection('users').doc(userId).get();
+        if (userSnapshot.exists) {
+          const userData = userSnapshot.data();
+          setUser(userData);
+        }
+      } catch (error) {
+        console.log('Error fetching user data:', error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+  if (user.status === 'royal') {
+    limit = 100;
+  }
+  else if (user.status === 'noble') {
+    limit = 50;
+  }
+  else {
+    limit = 10;
+  }
 
   const handleTextAreaChange = (event) => {
     setPostContent(event.target.value);
