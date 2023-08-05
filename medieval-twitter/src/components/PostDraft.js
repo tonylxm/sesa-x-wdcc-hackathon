@@ -1,22 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Picture, NameUsername, Post } from './Post';
+import { Picture, NameUsername } from './Post';
 import { BsImage, BsImageFill } from 'react-icons/bs';
 import { RiFileGifLine, RiFileGifFill } from 'react-icons/ri';
 import { db, auth } from '../firebase'; // Import your Firebase configuration file
+import { storage, uploadBytes, listAll } from "../firebase";
+import { ref } from "firebase/storage";
 
   export const ExternalFiles = () => {
     const [image, selectImage] = useState(false)
     const [gif, selectGif] = useState(false)
-    
-    const fileSelectorHandler = (event) => {
-        console.log(event.target);
-    }   
+    const [imageUpload, selsetImageUpload] = useState(null)
+
+    const uploadImage = () => {
+        if (imageUpload == null) return;
+        const imageRef = ref(storage, `images/${imageUpload.name + "hihihihihh"}`);
+        uploadBytes(imageRef, imageUpload).then(() => {
+            alert("Image Uploaded!");
+        })
+    };
 
     return (
         <div className=" flex">
-            <input type='file' onChange={fileSelectorHandler}/>
-            <button className="m-3 mt-7 ml-0" onClick={() => selectImage(!image)}>{image ? <BsImageFill size="20" /> : <BsImage size="20" />}</button>
+            <input type='file' onChange={(event) => {
+                selsetImageUpload(event.target.files[0]);
+            }}/>
+            <button className="m-3 mt-7 ml-0" onClick={() => {
+                uploadImage(); 
+                selectImage(!image);
+            }}>{image ? <BsImageFill size="20" /> : <BsImage size="20" />}
+            </button>
             
             <button className="m-3 mt-7 ml-0" onClick={() => selectGif(!gif)}>{gif ? <RiFileGifFill size="20" /> : <RiFileGifLine size="20" />}</button>
         </div>
