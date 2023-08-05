@@ -90,7 +90,7 @@ const PostDraft = () => {
             .then(() => {
               console.log('Comment added successfully to the post!');
             }).then (() => {
-                navigate('/home');
+                navigate('/feed');
             })
             .catch((error) => {
               console.error('Error adding comment to the post:', error);
