@@ -42,6 +42,9 @@ function Navbar() {
                 <Link to="/leaderboard" className="text-white hover:text-gray-300"> Leaderboard </Link>
               </li>
               <li>
+                <Link to="/post" className="text-white hover:text-gray-300"> Post </Link>
+              </li>
+              <li>
                 <Link
                     to="/login"
                     onClick={handleLogout}
