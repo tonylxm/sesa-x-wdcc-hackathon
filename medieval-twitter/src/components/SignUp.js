@@ -6,6 +6,8 @@ function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const [userName, setuserName] = useState('');
+
   const [passwordError, setPasswordError] = useState('');
   const [emailError, setEmailError] = useState('');
 
@@ -56,6 +58,7 @@ function SignUp() {
       console.log(user.email);
       console.log(name);
       console.log(selectedStatus);
+      console.log(userName);
 
       let letters = 0; // Initialize letters variable with a default value
       if (selectedStatus === 'royal') {
@@ -74,6 +77,7 @@ function SignUp() {
         name: name,
         status: selectedStatus,
         letters: letters,
+        userName: userName,
       });
 
       //add user to leaderboard
@@ -122,6 +126,16 @@ function SignUp() {
               className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
               value={name}
               onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="mb-6 pt-3 rounded bg-gray-200">
+            <label htmlFor="userName" className="block text-gray-700 text-sm font-bold mb-2 ml-3">User Name</label>
+            <input
+              type="text"
+              id="userName"
+              className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
+              value={userName}
+              onChange={(e) => setuserName(e.target.value)}
             />
           </div>
           <div className="mb-6 pt-3 rounded bg-gray-200">
