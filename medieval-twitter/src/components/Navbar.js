@@ -1,9 +1,12 @@
 import { React, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { auth } from '../firebase'; // Import your Firebase configuration file
+import logo from '../xiv.png'
+
 
 function Navbar() {
   const [currentUser, setCurrentUser] = useState(null); // Use state to store the current user
+  const location = useLocation(); // Get the current route location
 
   useEffect(() => {
     // Add an event listener to listen for authentication state changes
@@ -25,11 +28,19 @@ function Navbar() {
     }
   };
 
+  const isHomePage = location.pathname === '/';
+
+  if (isHomePage) {
+    return null;
+  }
+
   return (
-    <nav className="bg-blue-500 p-4">
+    <nav className="background-dark p-4">
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
-          <div className="text-white font-bold text-lg">Logo</div>
+          <div className="text-white font-bold text-lg w-20 logo">
+            <img src={logo} alt="our logo" />
+          </div>
           {currentUser ? ( // Show the unordered list only if the user is signed in
             <ul className="flex space-x-4">
               <li>

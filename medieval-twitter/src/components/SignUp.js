@@ -94,7 +94,7 @@ function SignUp() {
   };
 
   return (
-    <div className="body-bg min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0">
+    <div className="background-lightdark min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0">
       <main className="max-w-sm mx-auto bg-white p-8 rounded-lg shadow-2xl">
         <h2 className="text-2xl font-bold mb-4">Sign Up</h2>
         <form onSubmit={handleSubmit} className="flex flex-col">
@@ -162,13 +162,13 @@ function SignUp() {
           </div>
           <button
             type="submit"
-            className="bg-blue-500 text-white font-bold py-2 rounded hover:bg-blue-600"
+            className="btn-style text-white font-bold py-2 rounded"
           >
             Sign Up
           </button>
 
           <p className="mt-4 mx-auto">Already have an account?</p>
-          <Link to="/login" className="text-blue-500 mx-auto hover:text-blue-600 font-bold">
+          <Link to="/login" className="link-style mx-auto font-bold">
             Login Here
           </Link>
         </form>
