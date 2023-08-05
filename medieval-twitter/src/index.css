@@ -55,3 +55,10 @@ body {
 .link-style:hover {
   color: var(--dark-brown);
 }
+.background-image {
+  width: 100%;
+  height: 100%;
+  background-image: url('./bgtown.png');
+  background-size: cover;
+  background-position: center;
+}

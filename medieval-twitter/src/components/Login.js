@@ -23,7 +23,7 @@ function Login() {
       await auth.signInWithEmailAndPassword(email, password);
       console.log('User logged in');
       // Additional logic after successful login
-      navigate('/home');
+      navigate('/feed');
     } catch (error) {
       setError('Invalid email or password. Please try again.');
       console.log('Login error:', error);
