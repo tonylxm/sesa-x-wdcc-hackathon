@@ -3,44 +3,66 @@ import { useNavigate } from 'react-router-dom';
 import { Picture, NameUsername, Post } from './Post';
 import { BsImage, BsImageFill } from 'react-icons/bs';
 import { RiFileGifLine, RiFileGifFill } from 'react-icons/ri';
-import { db, auth } from '../firebase'; // Import your Firebase configuration file
+import { db, auth, storage } from '../firebase'; // Import your Firebase configuration file
 import axios from 'axios';
 
-  export const ExternalFiles = () => {
-    const [image, selectImage] = useState(false)
-    const [gif, selectGif] = useState(false)
-    // const [file, selectFile] = useState(null)
+export const ExternalFiles = () => {
+  const [image, selectImage] = useState(false);
+  const [gif, selectGif] = useState(false);
+  const [file, selectFile] = useState(null);
+  const [imageURL, setImageURL] = useState('');
 
-    // const fileSelectorHandler = (event) => {
-    //     console.log(event.target.files[0]);
-    //     selectFile({
-    //         seletedFile: event.target.files[0]
-    //     })
-    // }   
+  const fileSelectorHandler = (event) => {
+    console.log(event.target.files[0]);
+    selectFile(event.target.files[0]);
+  };
 
-    // const uploadFileHandler = () => {
-    //     const fd = new FormData();
-    //     fd.append('image', file, file.name);
-    //     axios.post('')
-    //     .then(res => {
-    //         console.log(res);
-    //     });
-    // }
+  const uploadFileHandler = () => {
+    if (!file) {
+      console.log('No file selected.');
+      return;
+    }
+  
+    const storageRef = storage.ref();
+    const imageRef = storageRef.child(auth.currentUser.uid + '/' + file.name);
+  
+    // Upload the file to Firebase Storage
+    imageRef
+      .put(file)
+      .then((snapshot) => {
+        console.log('File uploaded successfully!', snapshot);
+        return snapshot.ref.getDownloadURL();
+      })
+      .then((downloadURL) => {
+        console.log('Image URL:', downloadURL);
+        setImageURL(downloadURL); // Set the image URL state
+      })
+      .catch((error) => {
+        console.error('Error uploading file:', error);
+      });
+  };
 
-    return (
-        <div className=" flex">
-            {/* <input type='file' onChange={fileSelectorHandler}/> */}
-            <button className="m-3 mt-7 ml-0" onClick={() => {
-                // uploadFileHandler(); 
-                selectImage(!image);
-            }}>{image ? <BsImageFill size="20" /> : <BsImage size="20" />}
-            </button>
-            
-            <button className="m-3 mt-7 ml-0" onClick={() => selectGif(!gif)}>{gif ? <RiFileGifFill size="20" /> : <RiFileGifLine size="20" />}</button>
-        </div>
-    )
-}
+  return (
+    <div className=" flex">
+      <input type='file' onChange={fileSelectorHandler} />
+      <button
+        className="m-3 mt-7 ml-0"
+        onClick={() => {
+          uploadFileHandler();
+          selectImage(!image);
+        }}
+      >
+        {image ? <BsImageFill size="20" /> : <BsImage size="20" />}
+      </button>
 
+      <button className="m-3 mt-7 ml-0" onClick={() => selectGif(!gif)}>
+        {gif ? <RiFileGifFill size="20" /> : <RiFileGifLine size="20" />}
+      </button>
+
+      {imageURL && <img src={imageURL} alt="Uploaded" />}
+    </div>
+  );
+};
 const PostDraft = () => {
 
   const [postContent, setPostContent] = useState('');
