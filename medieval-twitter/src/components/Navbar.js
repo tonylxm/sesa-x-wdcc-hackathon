@@ -1,7 +1,11 @@
 import { React, useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { auth } from '../firebase'; // Import your Firebase configuration file
-import logo from '../xiv.png'
+import logo from '../xiv.png';
+import home from '../home icon.png';
+import hierarchy from '../heirarchy icon.png';
+import friends from '../friends icon2.png';
+import logout from '../logout icon.png';
 
 
 function Navbar() {
@@ -44,21 +48,21 @@ function Navbar() {
           {currentUser ? ( // Show the unordered list only if the user is signed in
             <ul className="flex space-x-4">
               <li>
-                <Link to="/friends" className="text-white hover:text-gray-300"> Friends </Link>
+                <Link to="/friends" className="text-white hover:text-gray-300"> <div class="px-2"><img src={friends} alt = "friends icon" className="h-14"/>Friends</div></Link>
               </li>
               <li>
-                <Link to="/" className="text-white hover:text-gray-300"> Home </Link>
+                <Link to="/" className="text-white hover:text-gray-300"><div class="px-2"><img src={home} alt = "home icon" className="h-14"/>Home</div></Link>
               </li>
               <li>
-                <Link to="/hierarchy" className="text-white hover:text-gray-300"> Hierarchy </Link>
+                <Link to="/hierarchy" className="text-white hover:text-gray-300"><div class="px-2"><img src={hierarchy} alt = "hierarchy icon" className="h-14"/>Hierarchy</div></Link>
               </li>
               <li>
                 <Link
                     to="/login"
                     onClick={handleLogout}
                     className="text-white hover:text-gray-300 focus:outline-none"
-                  >
-                    Logout
+                  > <div class="px-2"><img src={logout} alt="logout button" className="h-14" />
+                    Logout</div>
                   </Link>
               </li>
             </ul>
