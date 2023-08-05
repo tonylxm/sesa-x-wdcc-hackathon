@@ -1,5 +1,7 @@
 import React from 'react';
-
+import {useState} from 'react';
+import { PiThumbsUp, PiThumbsDown, PiThumbsUpFill, PiThumbsDownFill } from 'react-icons/pi';
+import { BiCommentDetail, BiSolidCommentDots } from 'react-icons/bi';
 
 export const Picture = () => {
     return (
@@ -23,8 +25,23 @@ export const NameUsername = () => {
 export const TextBody = () => {
     return (
         <p>This is some placeholder text. May the King live for a long time and have lots of good things. Our Father in Heaven, Hallowed be thy name. thy
-            Kingdom come, thy will be done in Earth as it is in Heaven. Give us today our daily bread
+            Kingdom come, thy will be done in Earth as it is in Heaven. Give us today our daily bread.
         </p>
+    )
+}
+
+export const ReactionBar = () => {
+    const [thumbsUp, setThumbsUp] = useState(false)
+    const [thumbsDown, setThumbsDown] = useState(false)
+    const [comment, setComment] = useState(false)
+
+    return (
+        <div className=" flex">
+            <button className="m-3 mt-7 ml-0" onClick={()=>setThumbsUp(!thumbsUp)}>{thumbsUp ? <PiThumbsUpFill size="20"/> : <PiThumbsUp size="20"/>}</button>
+            <button className="m-3 mt-7 ml-0" onClick={()=>setThumbsDown(!thumbsDown)}>{thumbsDown ? <PiThumbsDownFill size="20"/> : <PiThumbsDown size="20"/>}</button>
+            <button className="m-3 mt-7 ml-0" onClick={()=>setComment(!comment)}>{comment ? <BiSolidCommentDots size="20"/> : <BiCommentDetail size="20"/>}</button>
+        </div>
+        
     )
 }
 
@@ -39,6 +56,7 @@ export const Post = () => {
             </div>
         
         <TextBody />
+        <ReactionBar />
         </div>
 
     );
