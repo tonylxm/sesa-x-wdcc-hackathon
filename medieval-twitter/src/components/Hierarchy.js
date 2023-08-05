@@ -14,9 +14,9 @@ function Leaderboard() {
   
       if (userSnapshot.exists) {
         const userData = userSnapshot.data();
-        const { name, email } = userData;
+        const { name, email, status, letters } = userData;
   
-        return { id: userId, name, email };
+        return { id: userId, name, email, status, letters };
       } else {
         // Handle the case where the user document does not exist
         return null;
@@ -25,7 +25,7 @@ function Leaderboard() {
       console.log('Error fetching user info:', error);
       return null;
     }
-  }
+  }  
   
   useEffect(() => {
     const fetchLeaderboardData = async () => {
@@ -50,12 +50,12 @@ function Leaderboard() {
 
   return (
     <div className="leaderboard bg-white rounded-lg shadow-md p-4">
-      <h2 className="text-2xl font-bold mb-4">Leaderboard</h2>
+      <h2 className="text-2xl font-bold mb-4">Hierarchy</h2>
       <ul>
         {leaderboardData.map((player) => (
           <li key={player.id} className="flex items-center justify-between py-2 border-b border-gray-300 last:border-b-0">
-            <span className="text-lg">{player.name}</span>
-            <span className="text-lg font-bold">{player.points}</span>
+            <span className="text-lg">{player.name} ({player.status}) </span>
+            <span className="text-lg font-bold">Letters:  {player.points}</span>
           </li>
         ))}
       </ul>

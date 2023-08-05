@@ -1,9 +1,16 @@
 import { React, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { auth } from '../firebase'; // Import your Firebase configuration file
+import logo from '../logo.png';
+import home from '../hmwhite.png';
+import hierarchy from '../hwhite.png';
+import friends from '../fwhite.png';
+import logout from '../lwhite.png';
+
 
 function Navbar() {
   const [currentUser, setCurrentUser] = useState(null); // Use state to store the current user
+  const location = useLocation(); // Get the current route location
 
   useEffect(() => {
     // Add an event listener to listen for authentication state changes
@@ -25,21 +32,29 @@ function Navbar() {
     }
   };
 
+  const isHomePage = location.pathname === '/';
+
+  if (isHomePage) {
+    return null;
+  }
+
   return (
-    <nav className="bg-blue-500 p-4">
+    <nav className="background-dark p-4">
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
-          <div className="text-white font-bold text-lg">Logo</div>
+          <div className="text-white font-bold text-lg w-20 logo">
+            <img src={logo} alt="our logo" />
+          </div>
           {currentUser ? ( // Show the unordered list only if the user is signed in
             <ul className="flex space-x-4">
               <li>
-                <Link to="/friends" className="text-white hover:text-gray-300"> Friends </Link>
+                <Link to="/friends" className="text-white hover:text-gray-300"> <div class="px-2"><img src={friends} alt = "friends icon" className="h-14"/>Friends</div></Link>
               </li>
               <li>
-                <Link to="/" className="text-white hover:text-gray-300"> Home </Link>
+                <Link to="/" className="text-white hover:text-gray-300"><div class="px-2"><img src={home} alt = "home icon" className="h-14"/>Home</div></Link>
               </li>
               <li>
-                <Link to="/leaderboard" className="text-white hover:text-gray-300"> Leaderboard </Link>
+                <Link to="/hierarchy" className="text-white hover:text-gray-300"><div class="px-2"><img src={hierarchy} alt = "hierarchy icon" className="h-14"/>Hierarchy</div></Link>
               </li>
               <li>
                 <Link to="/post" className="text-white hover:text-gray-300"> Post </Link>
@@ -52,8 +67,8 @@ function Navbar() {
                     to="/login"
                     onClick={handleLogout}
                     className="text-white hover:text-gray-300 focus:outline-none"
-                  >
-                    Logout
+                  > <div class="px-2"><img src={logout} alt="logout button" className="h-14" />
+                    Logout</div>
                   </Link>
               </li>
             </ul>
