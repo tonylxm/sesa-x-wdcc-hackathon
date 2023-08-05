@@ -10,7 +10,6 @@ function SignUp() {
   const [emailError, setEmailError] = useState('');
 
 
-
   //class selector
   const options = [
     { value: 'royal', label: 'Royal' },
@@ -58,7 +57,15 @@ function SignUp() {
       console.log(name);
       console.log(selectedStatus);
 
-      // Additional logic after successful sign-up
+      let letters = 0; // Initialize letters variable with a default value
+      if (selectedStatus === 'royal') {
+        letters = 100;
+      } else if (selectedStatus === 'noble') {
+        letters = 50;
+      } else if (selectedStatus === 'peasant') {
+        letters = 10;
+      }
+      
 
       //add user to firebase
       const userRef = db.collection('users').doc(user.uid);
@@ -66,6 +73,7 @@ function SignUp() {
         email: user.email,
         name: name,
         status: selectedStatus,
+        letters: letters,
       });
 
       //add user to leaderboard
