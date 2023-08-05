@@ -409,21 +409,19 @@ function FriendSystem() {
               Add Friends
             </button>
           </div>
-          <div className="flex items-center justify-between p-4">
-            {/* Search bar only displayed when activeTab is 'All' or 'Add Friends' */}
-            {(activeTab === 'Add Friends') && (
-              <>
-                <input
-                  type="text"
-                  placeholder="Search friends..."
-                  className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-                <button className="px-4 py-2 ml-2 bg-blue-500 text-white rounded-lg">Search</button>
-              </>
-            )}
-          </div>
+          {/* Search bar only displayed when activeTab is 'All' or 'Add Friends' */}
+          {(activeTab === 'Add Friends') && (
+            <div className="flex items-center justify-between p-4">
+              <input
+                type="text"
+                placeholder="Search friends..."
+                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <button className="px-4 py-2 ml-2 bg-blue-500 text-white rounded-lg">Search</button>
+            </div>
+          )}
   
           <FriendList friends={filteredFriends} activeTab={activeTab}/>
         </div>
