@@ -22,7 +22,7 @@ function Login() {
   };
 
   return (
-    <div className="body-bg min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0">
+    <div className="background-lightdark min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0">
       <main className="max-w-sm mx-auto bg-white p-8 rounded-lg shadow-2xl">
         <h2 className="text-2xl font-bold mb-4">Login</h2>
         <form onSubmit={handleSubmit} className="flex flex-col">
@@ -48,13 +48,13 @@ function Login() {
           </div>
           <button
             type="submit"
-            className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200"
+            className="btn-style font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200"
           >
             Log In
           </button>
 
           <p className="mt-4 mx-auto">Don't have an account yet?</p>
-          <Link to="/signup" className="mx-auto text-purple-600 hover:text-purple-700 font-bold">
+          <Link to="/signup" className="mx-auto link-style font-bold">
             Sign Up Here
           </Link>
         </form>
