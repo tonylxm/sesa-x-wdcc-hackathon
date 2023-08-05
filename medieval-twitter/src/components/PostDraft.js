@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Picture, NameUsername, Post } from './Post';
-import { PiThumbsUp, PiThumbsDown, PiThumbsUpFill, PiThumbsDownFill } from 'react-icons/pi';
-import { BsImage, BsImageFill} from 'react-icons/bs';
-import { BiCommentDetail, BiSolidCommentDots } from 'react-icons/bi';
+import { BsImage, BsImageFill } from 'react-icons/bs';
+import { RiFileGifLine, RiFileGifFill } from 'react-icons/ri';
 import { db, auth } from '../firebase'; // Import your Firebase configuration file
 
 
@@ -75,28 +74,38 @@ import { db, auth } from '../firebase'; // Import your Firebase configuration fi
   };
   */
 
-export const ExternalFiles = () => {
+  export const ExternalFiles = () => {
     const [image, selectImage] = useState(false)
-    const [thumbsDown, setThumbsDown] = useState(false)
-    const [comment, setComment] = useState(false)
+    const [gif, selectGif] = useState(false)
 
     return (
         <div className=" flex">
             <button className="m-3 mt-7 ml-0" onClick={() => selectImage(!image)}>{image ? <BsImageFill size="20" /> : <BsImage size="20" />}</button>
-            <button className="m-3 mt-7 ml-0" onClick={() => setThumbsDown(!thumbsDown)}>{thumbsDown ? <PiThumbsDownFill size="20" /> : <PiThumbsDown size="20" />}</button>
-            <button className="m-3 mt-7 ml-0" onClick={() => setComment(!comment)}>{comment ? <BiSolidCommentDots size="20" /> : <BiCommentDetail size="20" />}</button>
+            <button className="m-3 mt-7 ml-0" onClick={() => selectGif(!gif)}>{gif ? <RiFileGifFill size="20" /> : <RiFileGifLine size="20" />}</button>
         </div>
-
     )
 }
 
 const PostDraft = () => {
+
   const [postContent, setPostContent] = useState('');
   const navigate = useNavigate();
+
+  // character count
+  const [charCount, setCharCount] = useState(0);
+
+  // word limit
+  const limit = 10;
+
 
   const handleTextAreaChange = (event) => {
     setPostContent(event.target.value);
   };
+
+  useEffect(() => {
+    // update char count (including whitespaces)
+    setCharCount(postContent.length);
+}, [postContent]);
 
   const handlePostSubmission = () => {
     if (postContent) {
@@ -151,6 +160,8 @@ const PostDraft = () => {
           onChange={handleTextAreaChange}
         />
       </div>
+      <p id='word-count'>Character allowance: {charCount}/{limit}</p>
+
       <ExternalFiles />
       <div>
         <button
