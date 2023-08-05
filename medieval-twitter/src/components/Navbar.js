@@ -1,11 +1,11 @@
 import { React, useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { auth } from '../firebase'; // Import your Firebase configuration file
-import logo from '../xiv.png';
-import home from '../home icon.png';
-import hierarchy from '../heirarchy icon.png';
-import friends from '../friends icon2.png';
-import logout from '../logout icon.png';
+import logo from '../logo.png';
+import home from '../hmwhite.png';
+import hierarchy from '../hwhite.png';
+import friends from '../fwhite.png';
+import logout from '../lwhite.png';
 
 
 function Navbar() {
