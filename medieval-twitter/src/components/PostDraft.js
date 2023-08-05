@@ -8,10 +8,16 @@ import { db, auth } from '../firebase'; // Import your Firebase configuration fi
   export const ExternalFiles = () => {
     const [image, selectImage] = useState(false)
     const [gif, selectGif] = useState(false)
+    
+    const fileSelectorHandler = (event) => {
+        console.log(event.target);
+    }   
 
     return (
         <div className=" flex">
+            <input type='file' onChange={fileSelectorHandler}/>
             <button className="m-3 mt-7 ml-0" onClick={() => selectImage(!image)}>{image ? <BsImageFill size="20" /> : <BsImage size="20" />}</button>
+            
             <button className="m-3 mt-7 ml-0" onClick={() => selectGif(!gif)}>{gif ? <RiFileGifFill size="20" /> : <RiFileGifLine size="20" />}</button>
         </div>
     )
@@ -26,7 +32,7 @@ const PostDraft = () => {
   const [charCount, setCharCount] = useState(0);
 
   // word limit
-  const limit = 10;
+  const limit = 20;
 
   const handleTextAreaChange = (event) => {
     setPostContent(event.target.value);
