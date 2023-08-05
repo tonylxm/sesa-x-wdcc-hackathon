@@ -60,6 +60,12 @@ function Navbar() {
                 <Link to="/friends" className="text-white hover:text-gray-300"> <div class="px-2"><img src={friends} alt = "friends icon" className="h-14 m-auto"/>Friends</div></Link>
               </li>
               <li>
+                <Link to="/postdraft" className="text-white hover:text-gray-300"> Post Draft</Link>
+              </li>
+              <li>
+                <Link to="/post" className="text-white hover:text-gray-300"> Post </Link>
+              </li>
+              <li>
                 <Link
                     to="/login"
                     onClick={handleLogout}

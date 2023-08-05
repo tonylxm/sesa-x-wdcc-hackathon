@@ -1,8 +1,11 @@
 import React from 'react';
+
 import { useState, useEffect } from 'react';
 import { PiThumbsUp, PiThumbsDown, PiThumbsUpFill, PiThumbsDownFill } from 'react-icons/pi';
 import { BiCommentDetail, BiSolidCommentDots } from 'react-icons/bi';
 import pfp from '../images/profile-picture.jpg';
+import { db, auth } from '../firebase';
+
 
 function romanize (num) {
     if (isNaN(num))
@@ -28,14 +31,41 @@ export const Picture = ({img = pfp}) => {
     );
 }
 
-export const NameUsername = ({name="Lord Faarquard", username="@lordoftheland"}) => {
+export const NameUsername = () => {
+    const [user, setUser] = useState(null);
+  
+    useEffect(() => {
+      const fetchUserData = async () => {
+        const currentUser = auth.currentUser;
+        const userId = currentUser.uid;
+  
+        try {
+          const userSnapshot = await db.collection('users').doc(userId).get();
+          if (userSnapshot.exists) {
+            const userData = userSnapshot.data();
+            setUser(userData);
+          }
+        } catch (error) {
+          console.log('Error fetching user data:', error);
+        }
+      };
+  
+      fetchUserData();
+    }, []);
+  
     return (
-        <div >
-        <h1 className="font-bold w-full ml-5">{name}</h1>
-        <h3 className="block ml-5">{username}</h3>
-        </div>
+      <div>
+        {user ? (
+          <>
+            <h1 className="font-bold w-full ml-5">{user.name}</h1>
+            <h3 className="block ml-5">@{user.userName}</h3>  
+          </>
+        ) : (
+          <p>Loading user data...</p>
+        )}
+      </div>
     );
-}
+  };
 
 export const TextBody = ({text="This is some placeholder text. May the King live for a long time and have lots of good things. Our Father in Heaven, Hallowed be thy name. thy \
 Kingdom come, thy will be done in Earth as it is in Heaven. Give us today our daily bread."}) => {
