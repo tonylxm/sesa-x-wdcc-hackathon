@@ -22,7 +22,7 @@ export const Picture = ({img = pfp}) => {
     return (
         <>
         <div className="overflow-hidden rounded-lg w-16">
-            <img src={img} alt={"Your profile pic"} className="rounded-full w-full h-16 object-cover"  />
+            <img src={img} alt={"Your profile pic"} className="rounded-full w-full h-16 object-cover shadow-md"  />
         </div>
         </>
     );
