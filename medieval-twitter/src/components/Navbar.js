@@ -46,22 +46,25 @@ function Navbar() {
             <img src={logo} alt="our logo" />
           </div>
           {currentUser ? ( // Show the unordered list only if the user is signed in
-            <ul className="flex space-x-4">
+            <ul className="flex space-x-4 text-center">
               <li>
-                <Link to="/friends" className="text-white hover:text-gray-300"> <div class="px-2"><img src={friends} alt = "friends icon" className="h-14"/>Friends</div></Link>
+                <Link to="/feed" className="text-white hover:text-gray-300"><div class="px-2"><img src={home} alt = "home icon" className="h-14 m-auto"/>Feed</div></Link>
               </li>
               <li>
-                <Link to="/" className="text-white hover:text-gray-300"><div class="px-2"><img src={home} alt = "home icon" className="h-14"/>Home</div></Link>
+                <Link to="/post" className="text-white hover:text-gray-300"> Post </Link>
               </li>
               <li>
-                <Link to="/hierarchy" className="text-white hover:text-gray-300"><div class="px-2"><img src={hierarchy} alt = "hierarchy icon" className="h-14"/>Hierarchy</div></Link>
+                <Link to="/hierarchy" className="text-white hover:text-gray-300"><div class="px-2"><img src={hierarchy} alt = "hierarchy icon" className="h-14 m-auto"/>Hierarchy</div></Link>
+              </li>
+              <li>
+                <Link to="/friends" className="text-white hover:text-gray-300"> <div class="px-2"><img src={friends} alt = "friends icon" className="h-14 m-auto"/>Friends</div></Link>
               </li>
               <li>
                 <Link
                     to="/login"
                     onClick={handleLogout}
                     className="text-white hover:text-gray-300 focus:outline-none"
-                  > <div class="px-2"><img src={logout} alt="logout button" className="h-14" />
+                  > <div class="px-2"><img src={logout} alt="logout button" className="h-14 m-auto" />
                     Logout</div>
                   </Link>
               </li>
