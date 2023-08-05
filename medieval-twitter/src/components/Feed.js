@@ -98,7 +98,7 @@ const Feed = () => {
         <>
         <div>
             {postData.map((post) => (
-                <Post key={post.timestamp} name={post.name} username={post.username} dislikes={post.dislikes} comments={post.comments} likes={post.likes} text={post.text} time ={post.time}/>
+                <Post key={post.timestamp} name={post.name} userName={post.userName} dislikes={post.dislikes} comments={post.comments} likes={post.likes} text={post.text} time ={"6 August 2023"}/>
             ))}
         </div>
         </>
