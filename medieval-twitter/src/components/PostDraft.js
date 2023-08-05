@@ -5,75 +5,6 @@ import { BsImage, BsImageFill } from 'react-icons/bs';
 import { RiFileGifLine, RiFileGifFill } from 'react-icons/ri';
 import { db, auth } from '../firebase'; // Import your Firebase configuration file
 
-
-/*const TextArea = () => {
-
-    const [postContent, setPostContent] = useState('');
-
-    const handleTextAreaChange = (event) => {
-      setPostContent(event.target.value);
-    };
-
-
-    var wordLen = 255; // Maximum word length
-    // function checkWordLen(obj) {
-    //     var len = obj.value.split(/[\s]+/);
-    //     if (len.length > wordLen) {
-    //         alert("You cannot put more than " + wordLen + " words in this text area.");
-    //         obj.oldValue = obj.value != obj.oldValue ? obj.value : obj.oldValue;
-    //         obj.value = obj.oldValue ? obj.oldValue : "";
-    //         return false;
-    //     }
-    //     return true;
-    // }
-    // onKeyDown={checkWordLen(this)}
-
-    
-
-  return (
-    <div>
-      <textarea
-        placeholder="Start your post here..."
-        className="w-full text-black-500 border rounded"
-        value={postContent}
-        onChange={handleTextAreaChange}
-      />
-    </div>
-  );
-};
-*/
-
-/*const Submit = ({ postContent }) => {
-    const handlePostSubmission = () => {
-  
-      if (postContent) {
-        // Assuming you have a collection named "posts" in your Firebase firestore
-        db.collection('posts')
-          .add({
-            text: postContent,
-            timestamp: new Date(),
-          })
-          .then(() => {
-            console.log('Post submitted successfully!');
-          })
-          .catch((error) => {
-            console.error('Error submitting post:', error);
-          });
-      }
-    };
-  
-    return (
-      <button
-        className="float-right text-black-500 border border-black-500 hover:bg-blue-500 hover:text-white active:bg-blue-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-        type="button"
-        onClick={handlePostSubmission}
-      >
-        Submit
-      </button>
-    );
-  };
-  */
-
   export const ExternalFiles = () => {
     const [image, selectImage] = useState(false)
     const [gif, selectGif] = useState(false)
@@ -97,12 +28,15 @@ const PostDraft = () => {
   // word limit
   const limit = 10;
 
-
   const handleTextAreaChange = (event) => {
     setPostContent(event.target.value);
   };
 
   useEffect(() => {
+    if (charCount > limit - 1) {
+        console.log("Character Allowance Reached!!!");
+        setPostContent(postContent.slice(0, limit));
+    } 
     // update char count (including whitespaces)
     setCharCount(postContent.length);
 }, [postContent]);
@@ -168,8 +102,7 @@ const PostDraft = () => {
           className="float-right text-black-500 border border-black-500 hover:bg-blue-500 hover:text-white active:bg-blue-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
           type="button"
           onClick={handlePostSubmission}
-        >
-          Submit
+        > Submit
         </button>
       </div>
     </div>
