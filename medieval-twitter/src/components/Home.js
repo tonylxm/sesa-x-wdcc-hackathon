@@ -6,7 +6,7 @@ function Home() {
       <div className="min-h-screen pt-10 pb-6 px-2 md:px-0">
         <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-2xl">
           <div>
-            <img src="xiv.png" alt="our logo" />
+            <img src="../xiv.png" alt="our logo" />
           </div>
           <div className="py-10 font-black text-center text-black text-6xl">
             <h1>Ye Olde Tweets</h1>
