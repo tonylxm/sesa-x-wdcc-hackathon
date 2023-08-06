@@ -51,9 +51,6 @@ function Navbar() {
                 <Link to="/feed" className="text-white hover:text-gray-300"><div class="px-2"><img src={home} alt = "home icon" className="h-14 m-auto"/>Feed</div></Link>
               </li>
               <li>
-                <Link to="/post" className="text-white hover:text-gray-300"> Post </Link>
-              </li>
-              <li>
                 <Link to="/hierarchy" className="text-white hover:text-gray-300"><div class="px-2"><img src={hierarchy} alt = "hierarchy icon" className="h-14 m-auto"/>Hierarchy</div></Link>
               </li>
               <li>
@@ -61,9 +58,6 @@ function Navbar() {
               </li>
               <li>
                 <Link to="/postdraft" className="text-white hover:text-gray-300"> Post Draft</Link>
-              </li>
-              <li>
-                <Link to="/post" className="text-white hover:text-gray-300"> Post </Link>
               </li>
               <li>
                 <Link

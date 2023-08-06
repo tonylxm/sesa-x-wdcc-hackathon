@@ -247,6 +247,7 @@ const PostDraft = () => {
     if (postContent) {
       const storageRef = storage.ref();
       let imageUrl = null;
+      setPostContent('');
 
       // If an image is selected, upload it to Firebase Storage first
       if (file) {
@@ -301,7 +302,7 @@ const PostDraft = () => {
             console.log('Comment added successfully to the post!');
           })
           .then(() => {
-            navigate('/home');
+            navigate('/feed');
           })
           .catch((error) => {
             console.error('Error adding comment to the post:', error);
@@ -371,7 +372,7 @@ const PostDraft = () => {
       <div>
         <button
           className="float-right text-black-500 border border-black-500 hover:bg-blue-500 hover:text-white active:bg-blue-600 nt-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-          type="button"
+          type="submit"
           onClick={handlePostSubmission}
         > Submit
         </button>
