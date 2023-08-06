@@ -46,16 +46,16 @@ function Navbar() {
           {currentUser ? ( // Show the unordered list only if the user is signed in
             <ul className="flex space-x-4 text-center">
               <li>
-                <Link to="/feed" className="text-white hover:text-gray-300"><div class="px-2"><img src={home} alt = "home" className="h-14 m-auto"/>Feed</div></Link>
+                <Link to="/feed" className="text-white hover:text-black"><div class="px-2"><img src={home} alt = "feed" className="h-14 m-auto feed-hover"/>Feed</div></Link>
               </li>
               <li>
-                <Link to="/post" className="text-white hover:text-gray-300"><div class="px-2"><img src={post} alt="post" className="h-14 m-auto"/>Post</div></Link>
+                <Link to="/post" className="text-white hover:text-black"><div class="px-2"><img src={post} alt="post" className="h-14 m-auto" class="post-hover"/>Post</div></Link>
               </li>
               <li>
-                <Link to="/hierarchy" className="text-white hover:text-gray-300"><div class="px-2"><img src={hierarchy} alt = "hierarchy" className="h-14 m-auto"/>Hierarchy</div></Link>
+                <Link to="/hierarchy" className="text-white hover:text-black"><div class="px-2"><img src={hierarchy} alt = "hierarchy" className="h-14 m-auto" class="hierarch-hover"/>Hierarchy</div></Link>
               </li>
               <li>
-                <Link to="/friends" className="text-white hover:text-gray-300"> <div class="px-2"><img src={friends} alt = "friends" className="h-14 m-auto"/>Friends</div></Link>
+                <Link to="/friends" className="text-white hover:text-black"> <div class="px-2"><img src={friends} alt = "friends" className="h-14 m-auto" class="friend-hover"/>Friends</div></Link>
               </li>
               <li>
                 <Link to="/postdraft" className="text-white hover:text-gray-300"> Post Draft</Link>
@@ -67,8 +67,8 @@ function Navbar() {
                 <Link
                     to="/login"
                     onClick={handleLogout}
-                    className="text-white hover:text-gray-300 focus:outline-none"
-                  > <div class="px-2"><img src={logout} alt="logout" className="h-14 m-auto" />
+                    className="text-white hover:text-black focus:outline-none"
+                  > <div class="px-2"><img src={logout} alt="logout" className="h-14 m-auto" class="logout-hover"/>
                     Logout</div>
                   </Link>
               </li>
