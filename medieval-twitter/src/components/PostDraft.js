@@ -5,7 +5,7 @@ import { BsImage, BsImageFill } from 'react-icons/bs';
 import { RiFileGifLine, RiFileGifFill } from 'react-icons/ri';
 import { db, auth } from '../firebase'; // Import your Firebase configuration file
 
-const ExternalFiles = () => {
+  export const ExternalFiles = () => {
     const [image, selectImage] = useState(false)
     const [gif, selectGif] = useState(false)
     // const [file, selectFile] = useState(null)
