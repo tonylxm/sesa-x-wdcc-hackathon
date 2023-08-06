@@ -155,9 +155,9 @@ function FriendList({ friends, activeTab }) {
       case "Friends":
         return "Where are your friends? Oh right you have none...";
       case "Requests":
-        return "No friend requests? Are you lonely?";
+        return "No friend requests? The only friend you need is your KING!!!";
       case "Pending":
-        return "No pending friend requests! Make some friends!";
+        return "No pending friend requests! BEFRIEND YOUR KING!!!";
       default:
         return;
     }
