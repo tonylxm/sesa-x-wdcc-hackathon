@@ -4,15 +4,14 @@ import 'firebase/compat/auth';
 import "firebase/compat/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBU_5wHd29MGvEd7cF99PLhngtLks7MQH0",
-  authDomain: "wdcc-hackathon.firebaseapp.com",
-  projectId: "wdcc-hackathon",
-  storageBucket: "wdcc-hackathon.appspot.com",
-  messagingSenderId: "721883017727",
-  appId: "1:721883017727:web:8c97025d242446a19377ca",
-  measurementId: "G-SXKH1TZKXD"
+  apiKey: "AIzaSyDMNJ9N5LdtDNSasPybkV5UR5iQmxjFFvI",
+  authDomain: "sesaxwdcc-hackathon.firebaseapp.com",
+  projectId: "sesaxwdcc-hackathon",
+  storageBucket: "sesaxwdcc-hackathon.appspot.com",
+  messagingSenderId: "387315050100",
+  appId: "1:387315050100:web:1a8d9d77356ed3905c9321",
+  measurementId: "G-MB889WR4DE"
 };
-
 
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();

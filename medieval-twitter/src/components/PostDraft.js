@@ -165,8 +165,6 @@ const PostDraft = () => {
     limit = 10;
   }
 
-
-
   //gif handling
   const [searchQuery, setSearchQuery] = useState('');
   const [gifs, setGifs] = useState([]);
@@ -228,20 +226,29 @@ const PostDraft = () => {
         console.error('Error uploading file:', error);
       });
   };
-  
+
+  // flag to track if the limit has been exceeded
+  const [limitExceeded, setLimitExceeded] = useState(false);
 
   const handleTextAreaChange = (event) => {
-    setPostContent(event.target.value);
+    const newContent = event.target.value;
+    if (newContent.length <= limit) {
+      setPostContent(newContent);
+      setCharCount(newContent.length);
+      if (limitExceeded) {
+        setLimitExceeded(false);
+      }
+    } else {
+      setLimitExceeded(true);
+    }
   };
 
-    useEffect(() => {
-      if (charCount > limit - 1) {
-          console.log("Character Allowance Reached!!!");
-          setPostContent(postContent.slice(0, limit));
-      } 
-      // update char count (including whitespaces)
-      setCharCount(postContent.length);
-  }, [postContent]);
+  useEffect(() => {
+    if (limitExceeded) {
+      console.log("Character Allowance Reached!!!");
+      alert("Character Allowance Reached!!!");
+    }
+  }, [limitExceeded]);
 
   const handlePostSubmission = () => {
     if (postContent) {
@@ -302,6 +309,9 @@ const PostDraft = () => {
             console.log('Comment added successfully to the post!');
           })
           .then(() => {
+            setImageURL(null);
+            selectFile(null);
+            setCharCount(0);
             navigate('/feed');
           })
           .catch((error) => {

@@ -89,7 +89,7 @@ function FriendItem({ id, name, email, activeTab, status, letters }) {
     <div className="flex items-center justify-between px-4 py-2 bg-white hover:bg-gray-100">
       <div>
         <p className="text-lg font-medium text-gray-800">{name} ({status})</p>
-        <p className="text-sm text-gray-500">letters: {letters}</p>
+        <p className="text-sm text-gray-500">Character allowance: {letters}</p>
         
       </div>
       {activeTab === 'Add Friends' && (
@@ -103,7 +103,16 @@ function FriendItem({ id, name, email, activeTab, status, letters }) {
           {buttonLabel}
         </button>
       )}
-      {activeTab === 'Requests' || activeTab === 'Pending' && ( // Conditionally render the button under 'Requests' tab
+      {activeTab === 'Requests'&& ( // Conditionally render the button under 'Requests' tab
+        <button
+          className={`px-3 py-1 bg-blue-500 text-white rounded-full hover:bg-blue-600'
+          }`}
+          onClick={handleRequest}
+        >
+          {buttonLabel}
+        </button>
+      )}
+      {activeTab === 'Pending' && ( // Conditionally render the button under 'Requests' tab
         <button
           className={`px-3 py-1 bg-blue-500 text-white rounded-full hover:bg-blue-600'
           }`}
@@ -144,11 +153,11 @@ function FriendList({ friends, activeTab }) {
   const determinePlaceholder = activeTab => {
     switch (activeTab) {
       case "Friends":
-        return "You have no friends!";
+        return "Where are your friends? Oh right you have none...";
       case "Requests":
-        return "You have received no friend requests!";
+        return "No friend requests? Are you lonely?";
       case "Pending":
-        return "You have no pending friend requests!";
+        return "No pending friend requests! Make some friends!";
       default:
         return;
     }
