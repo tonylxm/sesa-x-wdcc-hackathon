@@ -6,6 +6,7 @@ import { db } from '../firebase'; // Import your Firebase configuration file
 function Leaderboard() {
   const [leaderboardData, setLeaderboardData] = useState([]);
 
+  let statusEmoji = '';
 
   async function getUserInfo(userId) {
     try {
@@ -36,7 +37,18 @@ function Leaderboard() {
             const userId = doc.id;
             const points = doc.data().points;
             const userData = await getUserInfo(userId);
-            return { id: userId, points, ...userData };
+
+            // let statusEmoji = '';
+
+            // if (userData.status === 'royal') {
+            //   statusEmoji = '👑';
+            // } else if (userData.status === 'noble') {
+            //   statusEmoji = '🛡️';
+            // } else if (userData.status === 'peasant') {
+            //   statusEmoji = '💩';
+            // }
+
+            return { id: userId, points, statusEmoji, ...userData };
           })
         );
         setLeaderboardData(leaderboardData);
@@ -54,7 +66,7 @@ function Leaderboard() {
       <ul>
         {leaderboardData.map((player) => (
           <li key={player.id} className="flex items-center justify-between py-2 border-b border-gray-300 last:border-b-0">
-            <span className="text-lg">{player.name} ({player.status}) </span>
+            <span className="text-lg">{player.name} </span>
             <span className="text-lg font-bold">Letters:  {player.points}</span>
           </li>
         ))}
