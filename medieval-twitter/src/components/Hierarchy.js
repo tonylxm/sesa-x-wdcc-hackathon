@@ -61,18 +61,21 @@ function Leaderboard() {
   }, []);
 
   return (
-    <div className="leaderboard bg-white rounded-lg shadow-md p-4">
-      <h2 className="text-2xl font-bold mb-4">Hierarchy</h2>
-      <ul>
-        {leaderboardData.map((player) => (
-          <li key={player.id} className="flex items-center justify-between py-2 border-b border-gray-300 last:border-b-0">
-            <span className="text-lg">{player.name} </span>
-            <span className="text-lg font-bold">Letters:  {player.points}</span>
-          </li>
-        ))}
-      </ul>
+    <div className="w-2/3 mx-auto">
+      <div className="leaderboard bg-white rounded-lg shadow-md p-4 background-light">
+        <h2 className="text-2xl font-bold mb-4 text-center">Hierarchy</h2>
+        <ul>
+          {leaderboardData.map((player) => (
+            <li key={player.id} className="flex items-center justify-between py-2 border-b border-gray-300 last:border-b-0">
+              <span className="text-lg font-serif italic text-gray-700">{player.name} ({player.status})</span>
+              <span className="text-lg font-bold text-yellow-800">Letters: {player.points}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
+
 }
 
 export default Leaderboard;
