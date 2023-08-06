@@ -65,7 +65,7 @@ const Feed = () => {
     
         fetchPostData();
         console.log(postData)
-      }, []);
+      }, [postData]);
 
     // useEffect(() => {
     //     const fetchPostData = async () => {
