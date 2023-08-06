@@ -68,7 +68,7 @@ function Leaderboard() {
           {leaderboardData.map((player) => (
             <li key={player.id} className="flex items-center justify-between py-2 border-b border-gray-300 last:border-b-0">
               <span className="text-lg font-serif italic text-gray-700">{player.name} ({player.status})</span>
-              <span className="text-lg font-bold text-yellow-800">Letters: {player.points}</span>
+              <span className="text-lg font-bold text-yellow-800">Character allowance: {player.points}</span>
             </li>
           ))}
         </ul>
