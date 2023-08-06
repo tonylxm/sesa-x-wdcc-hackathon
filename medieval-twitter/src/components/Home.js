@@ -9,11 +9,11 @@ function Home() {
           <div className="m-auto logo">
             <img src={logo} alt="our logo" />
           </div>
-          <div className="py-10 font-white text-center text-white text-7xl">
+          <div className="py-10 font-white text-center text-white">
             <div class="font-allura"><h1>Yer Town Square</h1></div>
-            <p className="text-lg w-2/5 m-auto mt-4" class="font-raleway">
+            <div className="text-lg zw-2/5 m-auto mt-4" class="font-raleway">
               Amidst the Enchantment of Medieval Marvels: Happening Right Now
-            </p>
+            </div>
           </div>
           <div className="flex justify-center items-center mt-4">
             <Link to="/signup" className="btn m-auto btn-style">
