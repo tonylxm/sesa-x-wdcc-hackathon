@@ -141,9 +141,23 @@ function FriendList({ friends, activeTab }) {
     fetchFriendInfo();
   }, [friends]);
 
+  const determinePlaceholder = activeTab => {
+    switch (activeTab) {
+      case "Friends":
+        return "You have no friends!";
+      case "Requests":
+        return "You have received no friend requests!";
+      case "Pending":
+        return "You have no pending friend requests!";
+      default:
+        return;
+    }
+  }
+
   return (
     <div className="flex flex-col space-y-2">
-      {friendInfo.map((friend) => (
+      { friendInfo.length === 0 ? <p className="text-center py-3">{determinePlaceholder(activeTab)}</p> :
+      friendInfo.map((friend) => (
         <FriendItem key={friend.id} id={friend.id} name={friend.name} email={friend.email} status={friend.status} letters={friend.letters} activeTab={activeTab}/>
       ))}
     </div>
@@ -364,7 +378,7 @@ function FriendSystem() {
           <div className="flex bg-gray-200">
             <button
               className={`px-4 py-2 flex-1 text-center btn-style ${
-                activeTab === 'Friends' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'
+                activeTab === 'Friends' && 'active'
               }`}
               onClick={() => setActiveTab('Friends')}
             >
@@ -372,7 +386,7 @@ function FriendSystem() {
             </button>
             <button
               className={`px-4 py-2 flex-1 text-center btn-style ${
-                activeTab === 'Pending' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'
+                activeTab === 'Pending' && 'active'
               }`}
               onClick={() => setActiveTab('Pending')}
             >
@@ -380,7 +394,7 @@ function FriendSystem() {
             </button>
             <button
               className={`px-4 py-2 flex-1 text-center btn-style ${
-                activeTab === 'Requests' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'
+                activeTab === 'Requests' && 'active'
               }`}
               onClick={() => setActiveTab('Requests')}
             >
@@ -388,28 +402,26 @@ function FriendSystem() {
             </button>
             <button
               className={`px-4 py-2 flex-1 text-center btn-style ${
-                activeTab === 'Add Friends' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'
+                activeTab === 'Add Friends' && 'active'
               }`}
               onClick={() => setActiveTab('Add Friends')}
             >
               Add Friends
             </button>
           </div>
-          <div className="flex items-center justify-between p-4">
-            {/* Search bar only displayed when activeTab is 'All' or 'Add Friends' */}
-            {(activeTab === 'Add Friends') && (
-              <>
-                <input
-                  type="text"
-                  placeholder="Search friends..."
-                  className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-                <button className="px-4 py-2 ml-2 bg-blue-500 text-white rounded-lg">Search</button>
-              </>
-            )}
-          </div>
+          {/* Search bar only displayed when activeTab is 'All' or 'Add Friends' */}
+          {(activeTab === 'Add Friends') && (
+            <div className="flex items-center justify-between p-4">
+              <input
+                type="text"
+                placeholder="Search friends..."
+                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <button className="px-4 py-2 ml-2 bg-blue-500 text-white rounded-lg">Search</button>
+            </div>
+          )}
   
           <FriendList friends={filteredFriends} activeTab={activeTab}/>
         </div>
