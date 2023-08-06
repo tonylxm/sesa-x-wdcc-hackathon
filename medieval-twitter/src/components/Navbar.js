@@ -56,7 +56,7 @@ function Navbar() {
               </li>
               <li>
                 <Link
-                    to="/login"
+                    to="/home"
                     onClick={handleLogout}
                     className="text-white hover:text-black focus:outline-none"
                   > <div class="px-2"><img src={logout} alt="logout" className="h-14 m-auto" class="logout-hover"/>
