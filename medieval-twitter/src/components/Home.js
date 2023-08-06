@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../squarel.png';
+import logo from '../circlel.png';
 import square from '../squarebackground.JPG';
 function Home() {
     return (

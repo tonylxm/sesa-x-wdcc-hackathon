@@ -4,14 +4,14 @@ import 'firebase/compat/auth';
 import "firebase/compat/storage";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBwWrXwVw6MmNqaQlzXnmwb3MKcnsx0G2o",
-    authDomain: "react-test-a89bd.firebaseapp.com",
-    projectId: "react-test-a89bd",
-    storageBucket: "react-test-a89bd.appspot.com",
-    messagingSenderId: "364063557695",
-    appId: "1:364063557695:web:e4e26bb17122d881e4508a",
-    measurementId: "G-LHPGV2205V"
-  };
+  apiKey: "AIzaSyBU_5wHd29MGvEd7cF99PLhngtLks7MQH0",
+  authDomain: "wdcc-hackathon.firebaseapp.com",
+  projectId: "wdcc-hackathon",
+  storageBucket: "wdcc-hackathon.appspot.com",
+  messagingSenderId: "721883017727",
+  appId: "1:721883017727:web:8c97025d242446a19377ca",
+  measurementId: "G-SXKH1TZKXD"
+};
 
 
 firebase.initializeApp(firebaseConfig);
