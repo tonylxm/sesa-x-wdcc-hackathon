@@ -153,11 +153,11 @@ function FriendList({ friends, activeTab }) {
   const determinePlaceholder = activeTab => {
     switch (activeTab) {
       case "Friends":
-        return "You have no friends!";
+        return "Where are your friends? Oh right you have none...";
       case "Requests":
-        return "You have received no friend requests!";
+        return "No friend requests? Are you lonely?";
       case "Pending":
-        return "You have no pending friend requests!";
+        return "No pending friend requests! Make some friends!";
       default:
         return;
     }
