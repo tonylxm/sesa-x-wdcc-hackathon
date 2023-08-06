@@ -228,20 +228,21 @@ const PostDraft = () => {
         console.error('Error uploading file:', error);
       });
   };
-  
 
   const handleTextAreaChange = (event) => {
-    setPostContent(event.target.value);
+    const newContent = event.target.value;
+    if (newContent.length <= limit) {
+      setCharCount(newContent.length);
+      setPostContent(newContent);
+    }
   };
 
-    useEffect(() => {
-      if (charCount > limit - 1) {
-          console.log("Character Allowance Reached!!!");
-          setPostContent(postContent.slice(0, limit));
-      } 
-      // update char count (including whitespaces)
-      setCharCount(postContent.length);
-  }, [postContent]);
+  useEffect(() => {
+    if (charCount >= limit) {
+      console.log("Character Allowance Reached!!!");
+      alert("Character Allowance Reached!!!");
+    }
+  }, [charCount]);
 
   const handlePostSubmission = () => {
     if (postContent) {
