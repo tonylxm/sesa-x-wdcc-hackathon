@@ -76,6 +76,7 @@ body {
   height: 70px;
   transition: transform 0.3s ease-in-out;
   transform-origin: center;
+  margin: auto;
 }
 .post-hover:hover {
   content: url('./post.png');
@@ -85,6 +86,7 @@ body {
   height: 70px;
   transition: transform 0.3s ease-in-out;
   transform-origin: center;
+  margin: auto;
 }
 .friend-hover:hover {
   content: url('./fr.png');
@@ -94,6 +96,7 @@ body {
   height: 70px;
   transition: transform 0.3s ease-in-out;
   transform-origin: center;
+  margin: auto;
 }
 .logout-hover:hover {
   content: url('./logout.png');
@@ -103,6 +106,7 @@ body {
   height: 70px;
   transition: transform 0.3s ease-in-out;
   transform-origin: center;
+  margin: auto;
 }
 .feed-hover:hover {
   content: url('./hm.png');
@@ -112,6 +116,7 @@ body {
   height: 70px;
   transition: transform 0.3s ease-in-out;
   transform-origin: center;
+  margin: auto;
 }
 .hierarch-hover:hover {
   content: url('./heirarchy.png');
