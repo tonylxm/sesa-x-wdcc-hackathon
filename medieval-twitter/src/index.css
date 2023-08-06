@@ -69,7 +69,53 @@ body {
 }
 .font-allura {
   font-family: 'Allura';
+  font-size: 300%;
 }
 .font-raleway {
   font-family: 'Raleway';
+}
+.post-hover {
+  height: 70px;
+  transition: transform 0.3s ease-in-out;
+  transform-origin: center;
+}
+.post-hover:hover {
+  content: url('./post.png');
+  transform: scale(1.2);
+}
+.friend-hover {
+  height: 70px;
+  transition: transform 0.3s ease-in-out;
+  transform-origin: center;
+}
+.friend-hover:hover {
+  content: url('./fr.png');
+  transform: scale(1.2);
+}
+.logout-hover {
+  height: 70px;
+  transition: transform 0.3s ease-in-out;
+  transform-origin: center;
+}
+.logout-hover:hover {
+  content: url('./logout.png');
+  transform: scale(1.2);
+}
+.feed-hover {
+  height: 70px;
+  transition: transform 0.3s ease-in-out;
+  transform-origin: center;
+}
+.feed-hover:hover {
+  content: url('./hm.png');
+  transform: scale(1.2);
+}
+.hierarch-hover {
+  height: 70px;
+  transition: transform 0.3s ease-in-out;
+  transform-origin: center;
+}
+.hierarch-hover:hover {
+  content: url('./heirarchy.png');
+  transform: scale(1.2);
 }
