@@ -103,7 +103,16 @@ function FriendItem({ id, name, email, activeTab, status, letters }) {
           {buttonLabel}
         </button>
       )}
-      {activeTab === 'Requests' || activeTab === 'Pending' && ( // Conditionally render the button under 'Requests' tab
+      {activeTab === 'Requests'&& ( // Conditionally render the button under 'Requests' tab
+        <button
+          className={`px-3 py-1 bg-blue-500 text-white rounded-full hover:bg-blue-600'
+          }`}
+          onClick={handleRequest}
+        >
+          {buttonLabel}
+        </button>
+      )}
+      {activeTab === 'Pending' && ( // Conditionally render the button under 'Requests' tab
         <button
           className={`px-3 py-1 bg-blue-500 text-white rounded-full hover:bg-blue-600'
           }`}

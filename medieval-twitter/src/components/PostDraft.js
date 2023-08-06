@@ -378,7 +378,7 @@ const PostDraft = () => {
 
       <div>
         <button
-          className="float-right text-black-500 border border-black-500 hover:bg-blue-500 hover:text-white active:bg-blue-600 nt-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          className="float-right btn-style nt-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
           type="submit"
           onClick={handlePostSubmission}
         > Submit
