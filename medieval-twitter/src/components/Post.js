@@ -23,6 +23,34 @@ function romanize (num) {
 }
 
 export const Picture = ({img = pfp}) => {
+
+  const [user, setUser] = useState('');
+  const [imageURL, setImageURL] = useState('');
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const currentUser = auth.currentUser;
+      const userId = currentUser.uid;
+
+      console.log(userId);
+
+      try {
+        const userSnapshot = await db.collection('users').doc(userId).get();
+        if (userSnapshot.exists) {
+          const userData = userSnapshot.data();
+          setImageURL(userData.image);
+          setUser(userData);
+        }
+      } catch (error) {
+        console.log('Error fetching user data:', error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+
+
     return (
         <>
         <div className="overflow-hidden rounded-lg w-16">
