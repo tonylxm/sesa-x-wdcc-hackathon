@@ -51,7 +51,7 @@ const Feed = () => {
                 postSnapshot.docs.map(async (doc) => {
                     const postId = doc.id;
                     const postData = doc.data();
-                    const { dislikes, likes, text, timestamp, userID } = postData; 
+                    const {  userID } = postData; 
                     const userData = await getUserInfo(userID);
                     return { id: postId, ...postData, ...userData };
                 })
@@ -63,7 +63,7 @@ const Feed = () => {
         };
     
         fetchPostData();
-        // console.log(postData)
+        console.log(postData)
       }, []);
 
     // useEffect(() => {
@@ -98,7 +98,7 @@ const Feed = () => {
         <>
         <div>
             {postData.map((post) => (
-                <Post key={post.timestamp} name={post.name} userName={post.userName} dislikes={post.dislikes} comments={post.comments} likes={post.likes} text={post.text} status={post.status} time ={"6 August 2023"}/>
+                <Post key={post.timestamp} name={post.name} userName={post.userName} dislikes={post.dislikes} comments={post.comments} likes={post.likes} text={post.text} status={post.status} image={post.image} time ={"6 August 2023"}/>
             ))}
         </div>
         </>
