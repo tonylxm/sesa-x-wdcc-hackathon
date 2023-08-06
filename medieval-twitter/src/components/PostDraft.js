@@ -369,9 +369,9 @@ const PostDraft = () => {
         {imageURL && <img src={imageURL} alt="Uploaded" />}
       </div>
 
-      <div>
+      <div class="container flex justify-end">
         <a href="#" class="image-button" onClick="handlePostSubmission()">
-          <img src="../sendicon.png" alt="send"/>
+          <img src="./sendicon.png" alt="send"/>
         </a>
       </div>
     </div>
