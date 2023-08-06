@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Post } from './Post';
+import PostDraft from './PostDraft';
 import { db } from '../firebase';
 
 const Feed = () => {
@@ -64,7 +65,7 @@ const Feed = () => {
     
         fetchPostData();
         console.log(postData)
-      }, []);
+      }, [postData]);
 
     // useEffect(() => {
     //     const fetchPostData = async () => {
@@ -97,6 +98,7 @@ const Feed = () => {
     return (
         <>
         <div>
+            <PostDraft />
             {postData.map((post) => (
                 <Post key={post.timestamp} name={post.name} userName={post.userName} dislikes={post.dislikes} comments={post.comments} likes={post.likes} text={post.text} status={post.status} image={post.image} time ={"6 August 2023"}/>
             ))}
