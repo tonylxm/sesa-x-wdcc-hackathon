@@ -4,7 +4,6 @@ import { Picture, NameUsername, Post } from './Post';
 import { BsImage, BsImageFill } from 'react-icons/bs';
 import { RiFileGifLine, RiFileGifFill } from 'react-icons/ri';
 import { db, auth, storage } from '../firebase'; // Import your Firebase configuration file
-import axios from 'axios';
 
 import GphApiClient from 'giphy-js-sdk-core';
 
