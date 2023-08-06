@@ -129,8 +129,43 @@ const PostDraft = () => {
   // character count
   const [charCount, setCharCount] = useState(0);
 
+  const [user, setUser] = useState('');
+
   // word limit
-  const limit = 20;
+  let limit = 20;
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const currentUser = auth.currentUser;
+      const userId = currentUser.uid;
+
+      console.log(userId);
+
+      try {
+        const userSnapshot = await db.collection('users').doc(userId).get();
+        if (userSnapshot.exists) {
+          const userData = userSnapshot.data();
+          setUser(userData);
+        }
+      } catch (error) {
+        console.log('Error fetching user data:', error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+  if (user.status === 'royal') {
+    limit = 100;
+  }
+  else if (user.status === 'noble') {
+    limit = 50;
+  }
+  else {
+    limit = 10;
+  }
+
+
 
   //gif handling
   const [searchQuery, setSearchQuery] = useState('');
