@@ -333,7 +333,7 @@ const PostDraft = () => {
       </div>
       <div>
         <textarea
-          placeholder="Start your post here..."
+          placeholder="What's on your mind?"
           className="w-full text-black-500 border rounded"
           value={postContent}
           onChange={handleTextAreaChange}
@@ -379,13 +379,10 @@ const PostDraft = () => {
         {imageURL && <img src={imageURL} alt="Uploaded" />}
       </div>
 
-      <div>
-        <button
-          className="float-right btn-style nt-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-          type="submit"
-          onClick={handlePostSubmission}
-        > Submit
-        </button>
+      <div class="container flex justify-end">
+        <a href="#" class="image-button" onClick="handlePostSubmission()">
+          <img src="./sendicon.png" alt="send"/>
+        </a>
       </div>
     </div>
   );
