@@ -86,7 +86,7 @@ function FriendItem({ id, name, email, activeTab, status, letters }) {
 
 
   return (
-    <div className="flex items-center justify-between px-4 py-2 bg-white hover:bg-gray-100">
+    <div className="flex items-center justify-between px-4 py-2 bg-white hover:bg-gray-100 bg-[url('./backgroundfeed.jpg')] bg-cover bg-center">
       <div>
         <p className="text-lg font-medium text-gray-800">{name} ({status})</p>
         <p className="text-sm text-gray-500">Character allowance: {letters}</p>
