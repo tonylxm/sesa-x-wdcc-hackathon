@@ -309,6 +309,9 @@ const PostDraft = () => {
             console.log('Comment added successfully to the post!');
           })
           .then(() => {
+            setImageURL(null);
+            selectFile(null);
+            setCharCount(0);
             navigate('/feed');
           })
           .catch((error) => {
