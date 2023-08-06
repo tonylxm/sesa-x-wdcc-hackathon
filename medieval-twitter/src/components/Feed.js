@@ -97,7 +97,7 @@ const Feed = () => {
     
     return (
         <>
-        <div className="bg-[url('./backgroundfeed.jpg')] bg-cover bg-center">
+        <div>
             <PostDraft />
             {postData.map((post) => (
                 <Post key={post.timestamp} name={post.name} userName={post.userName} dislikes={post.dislikes} comments={post.comments} likes={post.likes} text={post.text} status={post.status} image={post.image} time ={"6 August 2023"}/>

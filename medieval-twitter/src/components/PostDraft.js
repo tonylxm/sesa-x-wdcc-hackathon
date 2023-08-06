@@ -6,6 +6,7 @@ import { RiFileGifLine, RiFileGifFill } from 'react-icons/ri';
 import { db, auth, storage } from '../firebase'; // Import your Firebase configuration file
 
 import GphApiClient from 'giphy-js-sdk-core';
+import send from '../sendicon.png';
 
 const apiKey = '0daeIg73TT6IvweTfhK6aM54rZLCbOLD';
 const giphyClient = GphApiClient(apiKey);
@@ -384,7 +385,7 @@ const PostDraft = () => {
 
       <div class="container flex justify-end">
         <a href="#" class="image-button" onClick="handlePostSubmission()">
-          <img src="./sendicon.png" alt="send"/>
+          <img className='w-10' src={send} alt="send"/>
         </a>
       </div>
     </div>

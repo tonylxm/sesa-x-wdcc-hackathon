@@ -61,7 +61,7 @@ function Leaderboard() {
   }, []);
 
   return (
-    <div className="w-2/3 mx-auto bg-[url('./backgroundfeed.jpg')] bg-cover bg-center">
+    <div className="w-2/3 mx-auto">
       <div className="leaderboard bg-white rounded-lg shadow-md p-4 background-light">
         <h2 className="text-2xl font-bold mb-4 text-center">Hierarchy</h2>
         <ul>
