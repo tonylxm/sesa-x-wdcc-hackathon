@@ -165,8 +165,6 @@ const PostDraft = () => {
     limit = 10;
   }
 
-
-
   //gif handling
   const [searchQuery, setSearchQuery] = useState('');
   const [gifs, setGifs] = useState([]);
@@ -229,20 +227,28 @@ const PostDraft = () => {
       });
   };
 
+  // flag to track if the limit has been exceeded
+  const [limitExceeded, setLimitExceeded] = useState(false);
+
   const handleTextAreaChange = (event) => {
     const newContent = event.target.value;
     if (newContent.length <= limit) {
-      setCharCount(newContent.length);
       setPostContent(newContent);
+      setCharCount(newContent.length);
+      if (limitExceeded) {
+        setLimitExceeded(false);
+      }
+    } else {
+      setLimitExceeded(true);
     }
   };
 
   useEffect(() => {
-    if (charCount >= limit) {
+    if (limitExceeded) {
       console.log("Character Allowance Reached!!!");
       alert("Character Allowance Reached!!!");
     }
-  }, [charCount]);
+  }, [limitExceeded]);
 
   const handlePostSubmission = () => {
     if (postContent) {
