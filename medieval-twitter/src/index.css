@@ -45,6 +45,9 @@ body {
   background-color: var(--dark-brown);
   color: white;
 }
+.btn-style.active {
+  background-color: var(--brown)
+}
 .btn-style:hover {
   background-color: var(--brown);
 }
