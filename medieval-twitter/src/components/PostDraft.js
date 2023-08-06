@@ -161,6 +161,9 @@ const PostDraft = () => {
   else if (user.status === 'noble') {
     limit = 50;
   }
+  else if (user.status === 'king') {
+    limit = 999999999999999999;
+  }
   else {
     limit = 10;
   }

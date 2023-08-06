@@ -4,13 +4,13 @@ import 'firebase/compat/auth';
 import "firebase/compat/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDMNJ9N5LdtDNSasPybkV5UR5iQmxjFFvI",
-  authDomain: "sesaxwdcc-hackathon.firebaseapp.com",
-  projectId: "sesaxwdcc-hackathon",
-  storageBucket: "sesaxwdcc-hackathon.appspot.com",
-  messagingSenderId: "387315050100",
-  appId: "1:387315050100:web:1a8d9d77356ed3905c9321",
-  measurementId: "G-MB889WR4DE"
+  apiKey: "AIzaSyCLH4CP6GeDjiHKva_XEC35yyAmE2YGBf8",
+  authDomain: "back-up-server-626bd.firebaseapp.com",
+  projectId: "back-up-server-626bd",
+  storageBucket: "back-up-server-626bd.appspot.com",
+  messagingSenderId: "84589976542",
+  appId: "1:84589976542:web:08dacd3b8ef91c39659b4f",
+  measurementId: "G-M2ZVG16V93"
 };
 
 firebase.initializeApp(firebaseConfig);
