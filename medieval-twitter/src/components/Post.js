@@ -136,7 +136,7 @@ export const ReactionBar = ({dislikes=100, likes=273, comments=7}) => {
     )
 }
 
-export const Post = ({name, userName, dislikes, comments, status, likes, text, time}) => {
+export const Post = ({name, userName, dislikes, comments, status, likes, text, time, image}) => {
     // Add props to Picture later when pfp is added
     return (
         // <div style={{ backgroundImage: `url(${parchment})` }} className='m-auto p-10 w-1/2 h-1/4 bg-cover' >
@@ -153,6 +153,7 @@ export const Post = ({name, userName, dislikes, comments, status, likes, text, t
             </div>
         
         <TextBody text={text}/>
+        <img src={image}/>
         <ReactionBar likes={likes} dislikes={dislikes} comments={5} />
         </div>
 
