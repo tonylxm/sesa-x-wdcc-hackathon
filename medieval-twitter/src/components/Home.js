@@ -25,10 +25,10 @@ function Home() {
           </div>
         </div>
         <div className="min-w-screen mt-10 bg-white text-black p-20 pl-40">
-          <h1 className="text-2x1" class="font-allura">A Castle for Chatter</h1>
-          <p className="mt-2 w-1/2 text-xl" class="font-raleway">
-            In an era of jesters, jongleurs, and minstrels, we bring to you Medieval Tweets,
-            where every noble, knight, and peasant can share their thoughts...
+          <h1 className="text-2x1" class="font-allura">A Town full of Chatter</h1>
+          <p className="mt-2 w-1/3 text-xl" class="font-raleway">
+            In an era of jesters, jongleurs, and minstrels, we bring to you a town square, online.
+            Where every noble, knight, and peasant can share their thoughts. 
           </p>
         </div>
       </div>
