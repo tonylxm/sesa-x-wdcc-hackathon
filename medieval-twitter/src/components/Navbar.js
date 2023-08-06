@@ -6,7 +6,7 @@ import home from '../hmwhite.png';
 import hierarchy from '../hwhite.png';
 import friends from '../fwhite.png';
 import logout from '../lwhite.png';
-
+import post from '../wpost.png';
 
 function Navbar() {
   const [currentUser, setCurrentUser] = useState(null); // Use state to store the current user
@@ -42,22 +42,20 @@ function Navbar() {
     <nav className="background-dark p-4">
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
-{/*          <div className="text-white font-bold text-lg w-20 logo">*/}
             <img src={logo} alt="our logo" className = "w-20" />
-{/*          </div> */}
           {currentUser ? ( // Show the unordered list only if the user is signed in
             <ul className="flex space-x-4 text-center">
               <li>
-                <Link to="/feed" className="text-white hover:text-gray-300"><div class="px-2"><img src={home} alt = "home icon" className="h-14 m-auto"/>Feed</div></Link>
+                <Link to="/feed" className="text-white hover:text-gray-300"><div class="px-2"><img src={home} alt = "home" className="h-14 m-auto"/>Feed</div></Link>
               </li>
               <li>
-                <Link to="/post" className="text-white hover:text-gray-300"> Post </Link>
+                <Link to="/post" className="text-white hover:text-gray-300"><div class="px-2"><img src={post} alt="post" className="h-14 m-auto"/>Post</div></Link>
               </li>
               <li>
-                <Link to="/hierarchy" className="text-white hover:text-gray-300"><div class="px-2"><img src={hierarchy} alt = "hierarchy icon" className="h-14 m-auto"/>Hierarchy</div></Link>
+                <Link to="/hierarchy" className="text-white hover:text-gray-300"><div class="px-2"><img src={hierarchy} alt = "hierarchy" className="h-14 m-auto"/>Hierarchy</div></Link>
               </li>
               <li>
-                <Link to="/friends" className="text-white hover:text-gray-300"> <div class="px-2"><img src={friends} alt = "friends icon" className="h-14 m-auto"/>Friends</div></Link>
+                <Link to="/friends" className="text-white hover:text-gray-300"> <div class="px-2"><img src={friends} alt = "friends" className="h-14 m-auto"/>Friends</div></Link>
               </li>
               <li>
                 <Link to="/postdraft" className="text-white hover:text-gray-300"> Post Draft</Link>
@@ -70,7 +68,7 @@ function Navbar() {
                     to="/login"
                     onClick={handleLogout}
                     className="text-white hover:text-gray-300 focus:outline-none"
-                  > <div class="px-2"><img src={logout} alt="logout button" className="h-14 m-auto" />
+                  > <div class="px-2"><img src={logout} alt="logout" className="h-14 m-auto" />
                     Logout</div>
                   </Link>
               </li>
