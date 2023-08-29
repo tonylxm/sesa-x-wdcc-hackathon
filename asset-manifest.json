@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/sesa-x-wdcc-hackathon/home/static/css/main.3d77417d.css",
-    "main.js": "/sesa-x-wdcc-hackathon/home/static/js/main.aadde2a7.js",
-    "static/media/backgroundfeed.jpg": "/sesa-x-wdcc-hackathon/home/static/media/backgroundfeed.2a4fbc28f0e5c70a1a21.jpg",
-    "static/media/parchmentpost.png": "/sesa-x-wdcc-hackathon/home/static/media/parchmentpost.1959ec0252100677f987.png",
-    "static/media/bgtown.png": "/sesa-x-wdcc-hackathon/home/static/media/bgtown.4caa0968710e7d5605de.png",
-    "static/media/logout.png": "/sesa-x-wdcc-hackathon/home/static/media/logout.fb88a840bdcf77b869cd.png",
-    "static/media/circlel.png": "/sesa-x-wdcc-hackathon/home/static/media/circlel.fec191d3768f3ff72d20.png",
-    "static/media/post.png": "/sesa-x-wdcc-hackathon/home/static/media/post.69a8090ba43472d45921.png",
-    "static/media/wpost.png": "/sesa-x-wdcc-hackathon/home/static/media/wpost.62a86226f04becf753da.png",
-    "static/media/fr.png": "/sesa-x-wdcc-hackathon/home/static/media/fr.d1532b3d139ff1d1aad5.png",
-    "static/media/sendicon.png": "/sesa-x-wdcc-hackathon/home/static/media/sendicon.82a318898255faba61ef.png",
-    "static/media/hm.png": "/sesa-x-wdcc-hackathon/home/static/media/hm.2d0b398847b96319155f.png",
-    "static/media/lwhite.png": "/sesa-x-wdcc-hackathon/home/static/media/lwhite.414d85f53252b73b8534.png",
-    "index.html": "/sesa-x-wdcc-hackathon/home/index.html",
-    "main.3d77417d.css.map": "/sesa-x-wdcc-hackathon/home/static/css/main.3d77417d.css.map",
-    "main.aadde2a7.js.map": "/sesa-x-wdcc-hackathon/home/static/js/main.aadde2a7.js.map"
+    "main.css": "/sesa-x-wdcc-hackathon/static/css/main.982cd587.css",
+    "main.js": "/sesa-x-wdcc-hackathon/static/js/main.6c6b7c38.js",
+    "static/media/backgroundfeed.jpg": "/sesa-x-wdcc-hackathon/static/media/backgroundfeed.2a4fbc28f0e5c70a1a21.jpg",
+    "static/media/parchmentpost.png": "/sesa-x-wdcc-hackathon/static/media/parchmentpost.1959ec0252100677f987.png",
+    "static/media/bgtown.png": "/sesa-x-wdcc-hackathon/static/media/bgtown.4caa0968710e7d5605de.png",
+    "static/media/logout.png": "/sesa-x-wdcc-hackathon/static/media/logout.fb88a840bdcf77b869cd.png",
+    "static/media/circlel.png": "/sesa-x-wdcc-hackathon/static/media/circlel.fec191d3768f3ff72d20.png",
+    "static/media/post.png": "/sesa-x-wdcc-hackathon/static/media/post.69a8090ba43472d45921.png",
+    "static/media/wpost.png": "/sesa-x-wdcc-hackathon/static/media/wpost.62a86226f04becf753da.png",
+    "static/media/fr.png": "/sesa-x-wdcc-hackathon/static/media/fr.d1532b3d139ff1d1aad5.png",
+    "static/media/sendicon.png": "/sesa-x-wdcc-hackathon/static/media/sendicon.82a318898255faba61ef.png",
+    "static/media/hm.png": "/sesa-x-wdcc-hackathon/static/media/hm.2d0b398847b96319155f.png",
+    "static/media/lwhite.png": "/sesa-x-wdcc-hackathon/static/media/lwhite.414d85f53252b73b8534.png",
+    "index.html": "/sesa-x-wdcc-hackathon/index.html",
+    "main.982cd587.css.map": "/sesa-x-wdcc-hackathon/static/css/main.982cd587.css.map",
+    "main.6c6b7c38.js.map": "/sesa-x-wdcc-hackathon/static/js/main.6c6b7c38.js.map"
   },
   "entrypoints": [
-    "static/css/main.3d77417d.css",
-    "static/js/main.aadde2a7.js"
+    "static/css/main.982cd587.css",
+    "static/js/main.6c6b7c38.js"
   ]
 }
