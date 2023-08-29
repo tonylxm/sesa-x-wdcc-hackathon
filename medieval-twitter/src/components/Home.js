@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../circlel.png';
-import square from '../squarebackground.JPG';
+
 function Home() {
     return (
       <div className="min-h-screen pt-10 pb-6 px-2 md:px-0 background-lightdark">
