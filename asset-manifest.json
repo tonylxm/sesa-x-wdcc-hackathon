@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/sesa-x-wdcc-hackathon/static/css/main.982cd587.css",
-    "main.js": "/sesa-x-wdcc-hackathon/static/js/main.b3726ba2.js",
+    "main.js": "/sesa-x-wdcc-hackathon/static/js/main.8420ed65.js",
     "static/media/backgroundfeed.jpg": "/sesa-x-wdcc-hackathon/static/media/backgroundfeed.2a4fbc28f0e5c70a1a21.jpg",
     "static/media/parchmentpost.png": "/sesa-x-wdcc-hackathon/static/media/parchmentpost.1959ec0252100677f987.png",
     "static/media/bgtown.png": "/sesa-x-wdcc-hackathon/static/media/bgtown.4caa0968710e7d5605de.png",
@@ -15,10 +15,10 @@
     "static/media/lwhite.png": "/sesa-x-wdcc-hackathon/static/media/lwhite.414d85f53252b73b8534.png",
     "index.html": "/sesa-x-wdcc-hackathon/index.html",
     "main.982cd587.css.map": "/sesa-x-wdcc-hackathon/static/css/main.982cd587.css.map",
-    "main.b3726ba2.js.map": "/sesa-x-wdcc-hackathon/static/js/main.b3726ba2.js.map"
+    "main.8420ed65.js.map": "/sesa-x-wdcc-hackathon/static/js/main.8420ed65.js.map"
   },
   "entrypoints": [
     "static/css/main.982cd587.css",
-    "static/js/main.b3726ba2.js"
+    "static/js/main.8420ed65.js"
   ]
 }
